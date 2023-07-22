@@ -1,9 +1,11 @@
 /** During development, use this URL to access the server. */
-const apiService = process.env.SERVER || window.location.origin;
+const apiService = API_SERVER || window.location.origin;
+
+console.log(`API service: ${apiService}`);
 
 /** Application state */
 export const AppState = {
   isSearching: false,
-  searchQuery: '',
+  searchQuery: "",
   apiService,
 };

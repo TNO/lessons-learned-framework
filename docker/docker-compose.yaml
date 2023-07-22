@@ -18,12 +18,13 @@
 version: "3"
 services:
   keycloak:
-    image: jboss/keycloak:latest
+    image: quay.io/keycloak/keycloak:22.0.1
     container_name: kc
+    command: start-dev
     environment:
       - DB_VENDOR=h2
-      - KEYCLOAK_USER=admin
-      - KEYCLOAK_PASSWORD=${ADMIN_PWD}
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=${ADMIN_PWD}
     expose:
       - 8080
     # command:
@@ -33,7 +34,6 @@ services:
       - "8765:8080"
     volumes:
       - ./l3-realm.json:/opt/jboss/keycloak/l3-realm.json
-
 # https://github.com/tomav/docker-mailserver
 #   mail:
 #     image: tvial/docker-mailserver:latest

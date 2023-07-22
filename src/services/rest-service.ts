@@ -1,7 +1,7 @@
-import m from 'mithril';
-import { AppState } from '../models/app-state';
-import { TopicNames } from '../models/channels';
-import { IChannelDefinition, messageBus } from './message-bus-service';
+import m from "mithril";
+import { AppState } from "../models/app-state";
+import { TopicNames } from "../models/channels";
+import { IChannelDefinition, messageBus } from "./message-bus-service";
 
 const log = console.log;
 const error = console.error;
@@ -34,7 +34,7 @@ export class RestService<T extends { $loki?: number }> {
   public async create(item: T, fd?: FormData) {
     try {
       const result = await m.request<T>({
-        method: 'POST',
+        method: "POST",
         url: this.baseUrl,
         body: fd || item,
         withCredentials: this.withCredentials,
@@ -42,27 +42,27 @@ export class RestService<T extends { $loki?: number }> {
       this.setCurrent(result);
       this.addItemToList(this.current);
       return this.current;
-    } catch (err) {
+    } catch (err: any) {
       return error(err.message);
     }
   }
 
   public async update(item: T, fd?: FormData) {
     try {
-      console.debug('put');
+      console.debug("put");
       await m
         .request({
-          method: 'PUT',
+          method: "PUT",
           url: this.baseUrl + item.$loki,
           body: fd || item,
           withCredentials: this.withCredentials,
         })
-        .catch(e => console.error(e));
+        .catch((e) => console.error(e));
       // this.setCurrent(data);
       this.current = item;
       this.updateItemInList(item);
       return this.current;
-    } catch (err) {
+    } catch (err: any) {
       return error(err.message);
     }
   }
@@ -70,28 +70,28 @@ export class RestService<T extends { $loki?: number }> {
   public async delete(id = this.current.$loki) {
     try {
       await m.request<T>({
-        method: 'DELETE',
+        method: "DELETE",
         url: this.baseUrl + id,
         withCredentials: this.withCredentials,
       });
       log(`Deleted with id: ${id}.`);
       this.removeItemFromList(id);
-    } catch (err) {
+    } catch (err: any) {
       return error(err.message);
     }
   }
 
   public async load(id?: number | string): Promise<T | undefined> {
-    if (id === '-1') {
+    if (id === "-1") {
       return this.current;
     }
     const result = await m.request<T>({
-      method: 'GET',
+      method: "GET",
       url: this.baseUrl + id,
       withCredentials: this.withCredentials,
     });
     if (!result) {
-      console.warn('No result found at ' + this.baseUrl);
+      console.warn("No result found at " + this.baseUrl);
     }
     this.setCurrent(result || {});
     this.updateItemInList(this.current);
@@ -100,12 +100,12 @@ export class RestService<T extends { $loki?: number }> {
 
   public async loadList(): Promise<T[] | undefined> {
     const result = await m.request<T[]>({
-      method: 'GET',
+      method: "GET",
       url: this.baseUrl,
       withCredentials: this.withCredentials,
     });
     if (!result) {
-      console.warn('No result found at ' + this.baseUrl);
+      console.warn("No result found at " + this.baseUrl);
     }
     this.setList(result || []);
     return this.list;
@@ -136,10 +136,10 @@ export class RestService<T extends { $loki?: number }> {
   }
 
   private updateItemInList(item: T) {
-    this.setList(this.list.map(i => (i.$loki === item.$loki ? item : i)));
+    this.setList(this.list.map((i) => (i.$loki === item.$loki ? item : i)));
   }
 
   private removeItemFromList(id?: string | number) {
-    this.setList([...this.list.filter(i => i.$loki !== id)]);
+    this.setList([...this.list.filter((i) => i.$loki !== id)]);
   }
 }
