@@ -15,15 +15,12 @@ module.exports = {
   builtins: {
     define: {
       "process.env.NODE_ENV": "'development'",
-      // API_SERVER: "http://localhost:3000",
-      // "process.env.SERVER": process.env.SERVER,
-      // API_SERVER: devMode ? "http://localhost:3000" : "'public'",
-      API_SERVER: devMode ? "'http://localhost:3000'" : "'public'",
+      API_SERVER: devMode ? "'http://localhost:3000'" : undefined,
     },
     html: [
       {
         title: "Lessons-Learned Library (L3)",
-        publicPath: devMode ? undefined : "https://tno.github.io/cat",
+        publicPath: devMode ? undefined : undefined,
         scriptLoading: "defer",
         minify: !devMode,
         favicon: "./src/favicon.ico",

@@ -1,5 +1,5 @@
 import m from "mithril";
-import { Button, Icon, Parallax } from "mithril-materialized";
+import { Button, Icon } from "mithril-materialized";
 import { SlimdownView } from "mithril-ui-form";
 import background from "../../assets/background.jpg";
 import driverLogo from "../../assets/driver-logo-compact2.png";
@@ -14,7 +14,7 @@ export const HomePage = () => ({
         "nav.white",
         m(".nav-wrapper", [
           m(
-            "a.brand-logo[href=#]",
+            "a.hide-on-med-and-down.brand-logo[href=#]",
             m(`img[width=70][height=70][src=${logo}]`, {
               style: "margin: -3px 0 0 10px;",
             })
@@ -37,7 +37,11 @@ export const HomePage = () => ({
           })
         )
       ),
-      m(Parallax, { src: background }),
+      m(
+        ".center-align",
+        m("img.responsive-img", { alt: "Firefighters", src: background })
+      ),
+      // m(Parallax, { src: background }),
       m(
         ".section.white",
         m(".row.container.center", [

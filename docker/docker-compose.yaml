@@ -34,6 +34,25 @@ services:
       - "8765:8080"
     volumes:
       - ./l3-realm.json:/opt/jboss/keycloak/l3-realm.json
+  l3:
+    image: l3crisis
+    container_name: l3
+    ports:
+      - 8888:3000
+    volumes:
+      - ./db:/app/db
+    environment:
+      - LOKI_KEYCLOAK=http://keycloak:8080
+      - LOKI_REALM=l3
+      - LOKI_CLIENTID=l3app
+      - LOKI_PRETTY=true
+      - LOKI_PORT=3000
+      - LOKI_DB=./db/l3crisis.db
+      - LOKI_CORS=true
+      - LOKI_SIZE_LIMIT=1024mb
+      - LOKI_AUTHZ_CREATE=NJJXN4MLP63RSYXEWG82SPATZN53IYEW
+      - LOKI_AUTHZ_UPDATE=NJJXN4MLP63RSYXEWG82SPATZN53IYEW
+      - LOKI_AUTHZ_DELETE=NJJXN4MLP63RSYXEWG82SPATZN53IYEW
 # https://github.com/tomav/docker-mailserver
 #   mail:
 #     image: tvial/docker-mailserver:latest

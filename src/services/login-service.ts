@@ -1,4 +1,4 @@
-import Keycloak, { KeycloakError, KeycloakInstance } from "keycloak-js";
+import Keycloak, { KeycloakError } from "keycloak-js";
 import m, { FactoryComponent } from "mithril";
 import {
   EmailInput,
@@ -28,7 +28,7 @@ const authSuccessHandler = (authenticated: boolean) => {
 };
 
 export const Auth = {
-  keycloak: {} as KeycloakInstance,
+  keycloak: {} as Keycloak,
   isAuthenticated: true,
   name: "Dirk Stolk",
   username: "dirk.stolk@tno.nl",
