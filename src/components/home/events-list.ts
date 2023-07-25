@@ -8,9 +8,9 @@ import { EventsSvc } from "../../services/events-service";
 import { Auth } from "../../services/login-service";
 import {
   cmFunctions,
-  countries,
   eventTypes,
   incidentTypes,
+  veiligheidsregios,
 } from "../../template/llf";
 import {
   incidentFilter,
@@ -21,12 +21,12 @@ import {
 export const EventsList = () => {
   const state = {
     filterValue: "",
-    countryFilter: [],
+    vrFilter: [],
     eventTypeFilter: [],
     incidentTypeFilter: [],
     cmFunctionFilter: [],
   } as {
-    countryFilter: Array<string | number>;
+    vrFilter: Array<string | number>;
     eventTypeFilter: Array<string | number>;
     incidentTypeFilter: string[];
     cmFunctionFilter: Array<string | number>;
@@ -49,7 +49,7 @@ export const EventsList = () => {
     view: () => {
       console.log("EVENTS-LIST VIEW");
       const {
-        countryFilter,
+        vrFilter,
         eventTypeFilter,
         cmFunctionFilter,
         incidentTypeFilter,
@@ -66,7 +66,7 @@ export const EventsList = () => {
                 (Auth.roles.indexOf(Roles.ADMIN) >= 0 || Auth.canEdit(ev)))
           )
           .filter(query)
-          .filter(typeFilter("memberCountries", countryFilter))
+          .filter(typeFilter("memberCountries", vrFilter))
           .filter(typeFilter("eventType", eventTypeFilter))
           .filter(typeFilter("cmFunctions", cmFunctionFilter))
           .filter(incidentFilter(incidentTypeFilter))
@@ -85,13 +85,13 @@ export const EventsList = () => {
             [
               Auth.isAuthenticated &&
                 m(FlatButton, {
-                  label: "Add new event",
+                  label: "Nieuwe gebeurtenis",
                   iconName: "add",
                   class: "col s11 indigo darken-4 white-text",
                   style: "margin: 1em;",
                   onclick: async () => {
                     const ev = await EventsSvc.create({
-                      name: "New event",
+                      name: "Nieuwe gebeurtenis",
                       owner: [Auth.username],
                       published: false,
                       duration: 1,
@@ -104,12 +104,12 @@ export const EventsList = () => {
               m(
                 "h4.primary-text",
                 { style: "margin-left: 0.5em;" },
-                "Filter events"
+                "Filter gebeurtenis"
               ),
               m(TextInput, {
-                label: "Text filter of events",
+                label: "Filter op tekst",
                 id: "filter",
-                placeholder: "Part of title or description...",
+                placeholder: "Deel van titel of beschrijving...",
                 iconName: "filter_list",
                 onkeyup: (_: KeyboardEvent, v?: string) =>
                   (state.filterValue = v ? v : ""),
@@ -117,18 +117,18 @@ export const EventsList = () => {
                 className: "col s12",
               }),
               m(Select, {
-                placeholder: "Select one",
-                label: "Country",
-                checkedId: countryFilter,
-                options: countries,
+                placeholder: "Kies één of meer",
+                label: "Veiligheidsregio",
+                checkedId: vrFilter,
+                options: veiligheidsregios,
                 iconName: "public",
                 multiple: true,
-                onchange: (f) => (state.countryFilter = f),
+                onchange: (f) => (state.vrFilter = f),
                 className: "col s12",
               }),
               m(Select, {
-                placeholder: "Select one",
-                label: "Event type",
+                placeholder: "Kies één of meer",
+                label: "Type gebeurtenis",
                 checkedId: eventTypeFilter,
                 options: eventTypes,
                 iconName: "event_note",
@@ -137,8 +137,8 @@ export const EventsList = () => {
                 className: "col s12",
               }),
               m(Select, {
-                placeholder: "Select one",
-                label: "Incident",
+                placeholder: "Kies één of meer",
+                label: "Type incident",
                 checkedId: incidentTypeFilter,
                 options: incidentTypes,
                 iconName: "flash_on",
@@ -147,7 +147,7 @@ export const EventsList = () => {
                 className: "col s12",
               }),
               m(Select, {
-                placeholder: "Select one",
+                placeholder: "Kies één of meer",
                 label: "CM function",
                 checkedId: cmFunctionFilter,
                 options: cmFunctions,
@@ -158,13 +158,13 @@ export const EventsList = () => {
                 dropdownOptions: { container: "body" as any },
               }),
               m(FlatButton, {
-                label: "Clear all filters",
+                label: "Wis alle filters",
                 iconName: "clear_all",
                 class: "col s11",
                 style: "margin: 1em;",
                 onclick: () => {
                   state.filterValue = "";
-                  state.countryFilter.length = 0;
+                  state.vrFilter.length = 0;
                   state.cmFunctionFilter.length = 0;
                   state.eventTypeFilter.length = 0;
                   state.incidentTypeFilter.length = 0;
@@ -241,7 +241,7 @@ export const EventsList = () => {
       //       className: 'col s12 l4',
       //     }),
       //     m(Select, {
-      //       placeholder: 'Select one',
+      //       placeholder: 'Kies één',
       //       label: 'Event type filter',
       //       inline: true,
       //       checkedId: filter,

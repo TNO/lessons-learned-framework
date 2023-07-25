@@ -32,7 +32,7 @@ export const HomePage = () => ({
           },
           m(Button, {
             className: "yellow darken-3 btn-large",
-            label: "Get started",
+            label: "Start hier",
             onclick: () => dashboardSvc.switchTo(Dashboards.SEARCH),
           })
         )
@@ -46,19 +46,19 @@ export const HomePage = () => ({
         ".section.white",
         m(".row.container.center", [
           m(SlimdownView, {
-            md: `## Learn and share
+            md: `## Deel en Leer
 
-              The **Lessons Learned Library (L3)** is a repository in the domain of Crisis Management (CM) and Disaster Risk Reduction (DRR) for collecting and sharing lessons from preventive or response activities at events such as severe incidents, crisis situations, tests or exercises.`,
+              De **Lessons Learned Library (L3)** is een repository in het domein van crisismanagement (CM) voor het verzamelen en delen van lessen bij gebeurtenissen zoals ernstige incidenten, crisissituaties, testen of oefeningen.`,
           }),
           m(".row", [
             m(
               ".col.s12.m4",
               m(".icon-block", [
                 m(".center", m(Icon, { iconName: "group" })),
-                m("h5.center", "Share your experience"),
+                m("h5.center", "Deel je ervaring"),
                 m(
                   "p.light",
-                  "Help others, so they can take advantage of your experiences."
+                  "Help anderen, zodat zij kunnen profiteren van jouw ervaringen."
                 ),
               ])
             ),
@@ -66,10 +66,10 @@ export const HomePage = () => ({
               ".col.s12.m4",
               m(".icon-block", [
                 m(".center", m(Icon, { iconName: "flash_on" })),
-                m("h5.center", "Quick and easy"),
+                m("h5.center", "Snel een eenvoudig"),
                 m(
                   "p.light",
-                  "In a short period of time you can edit information and key lessons from an event in a well-organised way."
+                  "In een korte tijd kun je informatie en belangrijke lessen van een gebeurtenis op een goed georganiseerde manier bewerken."
                 ),
               ])
             ),
@@ -77,10 +77,10 @@ export const HomePage = () => ({
               ".col.s12.m4",
               m(".icon-block", [
                 m(".center", m(Icon, { iconName: "public" })),
-                m("h5.center", "Open to any professional"),
+                m("h5.center", "Open voor elke professional"),
                 m(
                   "p.light",
-                  "Not locked away in a safe or hidden in some report, but open to any CM professional interested to learn from other colleagues."
+                  "Niet opgesloten in een kluis of verborgen in een of ander rapport, maar toegankelijk voor elke CM-professional die geïnteresseerd is om te leren van andere collega's."
                 ),
               ])
             ),
@@ -88,46 +88,46 @@ export const HomePage = () => ({
         ])
       ),
     ]),
-    m(
-      "footer.page-footer.yellow.darken-3",
-      { style: "height: 100px; padding: 5px 0;" },
-      m(
-        ".container",
-        m(".clearfix", [
-          m("div", { style: "float: left; margin-right: 10px;" }, [
-            m("img", {
-              src: euLogo,
-              width: 100,
-              height: 67,
-              style: "display: block; margin-left: 20px;",
-            }),
-            m("span", "v1.0, September 2019"),
-          ]),
-          m("div", { style: "float: right; margin-left: 10px;" }, [
-            m("img", {
-              src: driverLogo,
-              width: 67,
-              height: 67,
-              style: "display: block; margin-left: 40px;",
-            }),
-            m(
-              "a.primary-text",
-              {
-                style: "display: block",
-                href: "https://www.project-driver.eu",
-                target: "_blank",
-              },
-              "www.project-driver.eu"
-            ),
-          ]),
-          m(
-            ".white-text",
-            `This project has received funding from the European Union's 7th Framework Programme for Research,
-          Technological Development and Demonstration under Grant Agreement (GA)`
-          ),
-          m("span", "©DRIVER+"),
-        ])
-      )
-    ),
+    // m(
+    //   "footer.page-footer.yellow.darken-3",
+    //   { style: "height: 100px; padding: 5px 0;" },
+    //   m(
+    //     ".container",
+    //     m(".clearfix", [
+    //       m("div", { style: "float: left; margin-right: 10px;" }, [
+    //         m("img", {
+    //           src: euLogo,
+    //           width: 100,
+    //           height: 67,
+    //           style: "display: block; margin-left: 20px;",
+    //         }),
+    //         m("span", "v1.0, September 2019"),
+    //       ]),
+    //       m("div", { style: "float: right; margin-left: 10px;" }, [
+    //         m("img", {
+    //           src: driverLogo,
+    //           width: 67,
+    //           height: 67,
+    //           style: "display: block; margin-left: 40px;",
+    //         }),
+    //         m(
+    //           "a.primary-text",
+    //           {
+    //             style: "display: block",
+    //             href: "https://www.project-driver.eu",
+    //             target: "_blank",
+    //           },
+    //           "www.project-driver.eu"
+    //         ),
+    //       ]),
+    //       m(
+    //         ".white-text",
+    //         `This project has received funding from the European Union's 7th Framework Programme for Research,
+    //       Technological Development and Demonstration under Grant Agreement (GA)`
+    //       ),
+    //       m("span", "©DRIVER+"),
+    //     ])
+    //   )
+    // ),
   ],
 });

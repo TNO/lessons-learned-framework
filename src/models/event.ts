@@ -1,5 +1,5 @@
-import { ILesson } from './lesson';
-import { IOrganisation } from './organisation';
+import { ILesson } from "./lesson";
+import { IOrganisation } from "./organisation";
 
 export interface ILokiObj {
   $loki: number;
@@ -12,6 +12,7 @@ export interface ILokiObj {
 }
 
 export interface IEvent extends ILokiObj {
+  [key: string]: any;
   /** Owner of the document */
   owner: string[];
   /** If true, the document is published */

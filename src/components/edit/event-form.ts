@@ -1,19 +1,19 @@
-import M from 'materialize-css';
-import m from 'mithril';
-import { Button, Chips, ModalPanel } from 'mithril-materialized';
-import { deepCopy, LayoutForm } from 'mithril-ui-form';
-import { IEvent } from '../../models';
-import { EventsSvc } from '../../services';
-import { Dashboards, dashboardSvc } from '../../services/dashboard-service';
-import { Auth } from '../../services/login-service';
-import { llf } from '../../template/llf';
-import { capitalizeFirstLetter } from '../../utils';
-import { CircularSpinner } from '../ui/preloader';
+import M from "materialize-css";
+import m from "mithril";
+import { Button, Chips, ModalPanel } from "mithril-materialized";
+import { deepCopy, FormAttributes, LayoutForm } from "mithril-ui-form";
+import { IEvent } from "../../models";
+import { EventsSvc } from "../../services";
+import { Dashboards, dashboardSvc } from "../../services/dashboard-service";
+import { Auth } from "../../services/login-service";
+import { llf } from "../../template/llf";
+import { capitalizeFirstLetter } from "../../utils";
+import { CircularSpinner } from "../ui/preloader";
 
 const log = console.log;
 
 const close = async (e?: UIEvent) => {
-  log('closing...');
+  log("closing...");
   dashboardSvc.switchTo(Dashboards.SEARCH);
   if (e) {
     e.preventDefault();
@@ -27,16 +27,18 @@ export const EventForm = () => {
     loaded: false,
     isValid: false,
     form: llf,
-    error: '',
+    error: "",
     /** Relevant context for the Form, can be used with show/disabling */
-    context: {
-      admin: true,
-    },
+    context: [
+      {
+        admin: true,
+      },
+    ],
   };
 
   const onsubmit = async () => {
     // state.hasChanged = false;
-    log('submitting...');
+    log("submitting...");
     if (state.event) {
       // const event = deepCopy(state.event);
       await EventsSvc.save(state.event);
@@ -46,8 +48,10 @@ export const EventForm = () => {
 
   return {
     oninit: () => {
-      return new Promise(async (resolve, reject) => {
-        const event = await EventsSvc.load(m.route.param('id')).catch(r => reject(r));
+      return new Promise<void>(async (resolve, reject) => {
+        const event = await EventsSvc.load(m.route.param("id")).catch((r) =>
+          reject(r)
+        );
         state.event = event ? deepCopy(event) : ({} as IEvent);
         state.loaded = true;
         m.redraw();
@@ -58,46 +62,54 @@ export const EventForm = () => {
     view: () => {
       const { event, form, context, loaded } = state;
       if (!loaded) {
-        return m(CircularSpinner, { className: 'center-align', style: 'margin-top: 20%;' });
+        return m(CircularSpinner, {
+          className: "center-align",
+          style: "margin-top: 20%;",
+        });
       }
       // log(event);
       const sections = form
-        .filter(c => c.type === 'section')
-        .map(c => ({
-          style: 'cursor: pointer;',
+        .filter((c) => c.type === "section")
+        .map((c) => ({
+          style: "cursor: pointer;",
           id: c.id,
-          title: c.label || capitalizeFirstLetter(c.id),
+          title: c.label || capitalizeFirstLetter((c.id || "").toString()),
         }));
-      const section = m.route.param('section') || sections[0].id;
-      return m('.row', [
+      const section = m.route.param("section") || sections[0].id;
+      return m(".row", [
         m(
-          '.col.s12.l3',
+          ".col.s12.l3",
           m(
-            'ul#slide-out.sidenav.sidenav-fixed',
+            "ul#slide-out.sidenav.sidenav-fixed",
             {
-              style: 'height: 95vh',
+              style: "height: 95vh",
               oncreate: ({ dom }) => {
                 M.Sidenav.init(dom);
               },
             },
             [
-              m('h4.primary-text', { style: 'margin-left: 20px;' }, 'Content'),
-              ...sections.map(s =>
+              m("h4.primary-text", { style: "margin-left: 20px;" }, "Inhoud"),
+              ...sections.map((s) =>
                 m(
-                  'li',
+                  "li",
                   m(
                     m.route.Link,
-                    { href: dashboardSvc.route(Dashboards.EDIT).replace(':id', `${event.$loki}?section=${s.id}`) },
-                    m('span.primary-text', s.title)
+                    {
+                      href: dashboardSvc
+                        .route(Dashboards.EDIT)
+                        .replace(":id", `${event.$loki}?section=${s.id}`),
+                    },
+                    m("span.primary-text", s.title)
                   )
                 )
               ),
-              m('.buttons', [
+              m(".buttons", [
                 m(Button, {
-                  label: 'Show event',
-                  iconName: 'visibility',
-                  className: 'right col s12',
-                  onclick: () => dashboardSvc.switchTo(Dashboards.READ, { id: event.$loki }),
+                  label: "Toon gebeurtenis",
+                  iconName: "visibility",
+                  className: "right col s12",
+                  onclick: () =>
+                    dashboardSvc.switchTo(Dashboards.READ, { id: event.$loki }),
                 }),
                 // m(Button, {
                 //   label: 'Save event',
@@ -106,31 +118,34 @@ export const EventForm = () => {
                 //   onclick: onsubmit,
                 // }),
                 m(Button, {
-                  modalId: 'delete-event',
-                  label: 'Delete event',
-                  iconName: 'delete',
-                  class: 'red col s12',
+                  modalId: "delete-event",
+                  label: "Verwijder gebeurtenis",
+                  iconName: "delete",
+                  class: "red col s12",
                 }),
               ]),
               Auth.isOwner(event)
                 ? m(
-                    'li',
+                    "li",
                     m(
-                      '.col.s12',
+                      ".col.s12",
                       m(Chips, {
-                        label: 'Owner(s)',
-                        placeholder: '+username',
-                        onchange: async chips => {
+                        label: "Eigenaar(en)",
+                        placeholder: "+gebruikersnaam",
+                        onchange: async (chips) => {
                           event.owner = chips.map(({ tag }) => tag);
                           if (event.owner.length === 0) {
-                            M.toast({ html: 'Owner(s) cannot be empty!', classes: 'red' });
+                            M.toast({
+                              html: "Eigenaar(en) kan niet leeg zijn!",
+                              classes: "red",
+                            });
                             event.owner.push(Auth.username);
                           }
                           await onsubmit();
                         },
                         data: event.owner
                           ? event.owner instanceof Array
-                            ? event.owner.map(owner => ({ tag: owner }))
+                            ? event.owner.map((owner) => ({ tag: owner }))
                             : [{ tag: event.owner }]
                           : [],
                       })
@@ -139,17 +154,19 @@ export const EventForm = () => {
                 : undefined,
               Auth.canCRUD(event)
                 ? m(
-                    'li',
+                    "li",
                     m(
-                      '.col.s12',
+                      ".col.s12",
                       m(Chips, {
-                        label: 'Rights to edit are provided to:',
-                        placeholder: '+username',
-                        onchange: chips => {
+                        label: "Wie mag dit bewerken:",
+                        placeholder: "+gebruikersnaam",
+                        onchange: (chips) => {
                           event.canEdit = chips.map(({ tag }) => tag);
                           m.redraw();
                         },
-                        data: (event.canEdit || []).map(editor => ({ tag: editor })),
+                        data: (event.canEdit || []).map((editor) => ({
+                          tag: editor,
+                        })),
                       })
                     )
                   )
@@ -157,7 +174,7 @@ export const EventForm = () => {
             ]
           )
         ),
-        m('.col.s12.l9', [
+        m(".col.s12.l9", [
           m(LayoutForm, {
             key: section,
             form,
@@ -171,23 +188,24 @@ export const EventForm = () => {
             },
             context,
             section,
-          }),
+          } as FormAttributes<Partial<IEvent>>),
         ]),
         m(ModalPanel, {
-          id: 'delete-event',
-          title: 'Delete event',
-          description: 'Do you really want to delete this event - there is no way back?',
+          id: "delete-event",
+          title: "Delete event",
+          description:
+            "Do you really want to delete this event - there is no way back?",
           options: { opacity: 0.7 },
           buttons: [
             {
-              label: 'Delete',
+              label: "Delete",
               onclick: async () => {
                 EventsSvc.delete(event.$loki);
                 close();
               },
             },
             {
-              label: 'Discard',
+              label: "Discard",
             },
           ],
         }),

@@ -1,23 +1,24 @@
-import m, { Attributes, FactoryComponent } from 'mithril';
-import { Form, LayoutForm, SlimdownView } from 'mithril-ui-form';
-import { IEvent, IMultimedia, IPublication } from '../models';
-import { ILesson } from '../models/lesson';
-import { formatOptional } from '../utils';
+import m, { Attributes, FactoryComponent } from "mithril";
+import { FormAttributes, LayoutForm, SlimdownView } from "mithril-ui-form";
+import { IEvent, IMultimedia, IPublication } from "../models";
+import { ILesson } from "../models/lesson";
+import { formatOptional } from "../utils";
 
 /** Print optional */
-const p = (val: string | number | Date | undefined, output?: string) => (val ? output || val : '');
+const p = (val: string | number | Date | undefined, output?: string) =>
+  val ? output || val : "";
 
 /** Print a list: a, b and c */
 const l = (val: undefined | string | string[]) => {
   if (!val) {
-    return '';
+    return "";
   }
   if (val instanceof Array) {
     if (val.length === 1) {
       return val[0];
     }
     const [last, oneButLast, ...items] = val.reverse();
-    return [...items, `${oneButLast} and ${last}`].filter(Boolean).join(', ');
+    return [...items, `${oneButLast} and ${last}`].filter(Boolean).join(", ");
   } else {
     return val;
   }
@@ -28,9 +29,17 @@ const showEditors = (event: Partial<IEvent>) => {
   return editors
     ? `<p class="center-align"><i>by ${editors
         .filter(Boolean)
-        .map(e => `${e.name}${formatOptional({ brackets: true }, e.role, e.organisation, e.country)}`)
-        .join(', ')}</i></p>`
-    : '';
+        .map(
+          (e) =>
+            `${e.name}${formatOptional(
+              { brackets: true },
+              e.role,
+              e.organisation,
+              e.country
+            )}`
+        )
+        .join(", ")}</i></p>`
+    : "";
 };
 
 const showOrganisations = (event: Partial<IEvent>) => {
@@ -39,22 +48,26 @@ const showOrganisations = (event: Partial<IEvent>) => {
     ? organisations
         .filter(Boolean)
         .map(
-          org =>
-            `- ${org.name}${formatOptional({ brackets: true }, org.type, org.country)}${p(org.info, `<br>${org.info}`)}`
+          (org) =>
+            `- ${org.name}${formatOptional(
+              { brackets: true },
+              org.type,
+              org.country
+            )}${p(org.info, `<br>${org.info}`)}`
         )
-        .join('\n')
-    : '';
+        .join("\n")
+    : "";
 };
 
 const showLessons = (event: Partial<IEvent>) => {
   const { lessons } = event;
   if (!lessons || lessons.length === 0) {
-    return 'No lessons have been learned yet.';
+    return "No lessons have been learned yet.";
   }
   const obs = ({ effectiveness, observationInfo }: ILesson) =>
-    `Observations during the event of this CM function shows that its effectiveness was '${p(effectiveness)}'. ${p(
-      observationInfo
-    )}`;
+    `Observations during the event of this CM function shows that its effectiveness was '${p(
+      effectiveness
+    )}'. ${p(observationInfo)}`;
   const createLesson = (les: ILesson, index: number) => {
     const {
       name,
@@ -76,11 +89,14 @@ const showLessons = (event: Partial<IEvent>) => {
     const intro =
       index === 0
         ? `From the evaluation of this event, the following ${
-            lessons.length === 1 ? 'lesson has' : `${lessons.length} lessons have`
+            lessons.length === 1
+              ? "lesson has"
+              : `${lessons.length} lessons have`
           } been learned.`
-        : '';
+        : "";
 
-    return `${intro}
+    return (
+      `${intro}
 <h6 class="primary-text">Lesson ${index + 1}: ${p(name)}</h6>
 
 This lesson addresses in particular CM function(s) ‘${p(cmFunction)}’.
@@ -88,32 +104,30 @@ This lesson addresses in particular CM function(s) ‘${p(cmFunction)}’.
 ${obs(les)}
 
 Possible solution or improvement of the CM function(s)’ performance can/has been found in aspects related to: ${p(
-      st
-    )}. ${p(lesson)}
+        st
+      )}. ${p(lesson)}
 
 The (expected) improvements of the CM function(s)’ performance of implementing such a solution are ${p(
-      effectsOnPerformance
-    )}. ${p(expectedImprovementsInfo)}
+        effectsOnPerformance
+      )}. ${p(expectedImprovementsInfo)}
 
-Additionally, the expected impact reductions on the described incident are ${p(victimsImprovements)}.` +
-// ${p(materialDamageImprovements, `- Material damage reduction: ${materialDamageImprovements}`)}
-// ${p(ciLossImprovements, `- Loss of services reduction: ${ciLossImprovements}`)}
-// ${p(socEcoDisruptionImprovements, `- Social/economic reduction: ${socEcoDisruptionImprovements}`)}
-// ${p(
-//   environmentalDegradationImprovements,
-//   `- Environmental degradation reduction: ${environmentalDegradationImprovements}`
-// )}
-`${p(explanationImprovements)}`;
+Additionally, the expected impact reductions on the described incident are ${p(
+        victimsImprovements
+      )}.` +
+      // ${p(materialDamageImprovements, `- Material damage reduction: ${materialDamageImprovements}`)}
+      // ${p(ciLossImprovements, `- Loss of services reduction: ${ciLossImprovements}`)}
+      // ${p(socEcoDisruptionImprovements, `- Social/economic reduction: ${socEcoDisruptionImprovements}`)}
+      // ${p(
+      //   environmentalDegradationImprovements,
+      //   `- Environmental degradation reduction: ${environmentalDegradationImprovements}`
+      // )}
+      `${p(explanationImprovements)}`
+    );
   };
-  return lessons
-    ? lessons
-        .filter(Boolean)
-        .map(createLesson)
-        .join('\n')
-    : '';
+  return lessons ? lessons.filter(Boolean).map(createLesson).join("\n") : "";
 };
 
-const formatUrl = (url?: string) => (url ? `[${url}](${url})` : '');
+const formatUrl = (url?: string) => (url ? `[${url}](${url})` : "");
 
 const showSources = (event: Partial<IEvent>) => {
   const { publications, multimedia } = event;
@@ -121,31 +135,37 @@ const showSources = (event: Partial<IEvent>) => {
   const formatPublication = (pub: IPublication) =>
     `${pub.title}${
       pub.yearOfPublication
-        ? ` (${pub.yearOfPublication}${pub.dissemination ? `, ${pub.dissemination}` : ''})`
-        : `${pub.dissemination ? `, ${pub.dissemination}` : ''}`
-    }${pub.author ? `, ${pub.author}` : ''}${pub.url ? `, ${formatUrl(pub.url)}` : ''}${formatOptional(
-      { brackets: true, prepend: 'original title: ' },
+        ? ` (${pub.yearOfPublication}${
+            pub.dissemination ? `, ${pub.dissemination}` : ""
+          })`
+        : `${pub.dissemination ? `, ${pub.dissemination}` : ""}`
+    }${pub.author ? `, ${pub.author}` : ""}${
+      pub.url ? `, ${formatUrl(pub.url)}` : ""
+    }${formatOptional(
+      { brackets: true, prepend: "original title: " },
       pub.orgTitle,
-      /other/i.test(pub.language || '') ? pub.otherLanguage : pub.language
+      /other/i.test(pub.language || "") ? pub.otherLanguage : pub.language
     )}`;
 
   const formatMultimedia = (mm: IMultimedia) =>
-    `${formatUrl(mm.url)}${mm.yearOfPublication ? ` (${mm.yearOfPublication})` : ''}${mm.desc ? `, ${mm.desc}` : ''}${
-      mm.owner ? ` (owned by ${mm.owner})` : ''
+    `${formatUrl(mm.url)}${
+      mm.yearOfPublication ? ` (${mm.yearOfPublication})` : ""
+    }${mm.desc ? `, ${mm.desc}` : ""}${
+      mm.owner ? ` (owned by ${mm.owner})` : ""
     }`;
 
   const ps = publications
     ? publications
         .filter(Boolean)
         .map((pub, i) => `${i + 1}. ${formatPublication(pub)}`)
-        .join('\n')
-    : '';
+        .join("\n")
+    : "";
   const ms = multimedia
     ? multimedia
         .filter(Boolean)
         .map((mm, i) => `${i + 1}. ${formatMultimedia(mm)}`)
-        .join('\n')
-    : '';
+        .join("\n")
+    : "";
 
   // console.log(ps);
 
@@ -157,7 +177,7 @@ ${ps}
 <h5 class="primary-text">Multimedia sources</h5>
 ${ms}
 `
-    : '';
+    : "";
 };
 
 /**
@@ -170,13 +190,13 @@ const formatEvent = (event: IEvent) => {
     damage,
     date: startDate,
     duration,
-    desc = '',
+    desc = "",
     disruption,
     environment,
     eventType,
     incidentInfo,
     initialIncident,
-    locationText = '',
+    locationText = "",
     lossOfServices,
     memberCountries,
     name,
@@ -184,7 +204,7 @@ const formatEvent = (event: IEvent) => {
     intInstitutions,
     otherIncidents,
     scale,
-    scaleExplanation = '',
+    scaleExplanation = "",
     societalSectors,
     societalSectorsAdditional,
     societalSectorsInfo,
@@ -192,7 +212,9 @@ const formatEvent = (event: IEvent) => {
   } = event;
   const oi = l(otherIncidents);
   const ss = l(societalSectors);
-  const mc = otherCountries ? l([...(memberCountries || []), otherCountries]) : l(memberCountries);
+  const mc = otherCountries
+    ? l([...(memberCountries || []), otherCountries])
+    : l(memberCountries);
   const cm = l(cmFunctions);
   const md = `
 <h4 class="primary-text center-align">${name}</h4>
@@ -201,16 +223,26 @@ ${showEditors(event)}
 
 ${p(eventType, `Type of event: ${eventType}`)}
 
-The event took place at ${p(locationText)} ${p(startDate, `on ${new Date(startDate).toDateString()}`)}${p(
+The event took place at ${p(locationText)} ${p(
+    startDate,
+    `on ${new Date(startDate).toDateString()}`
+  )}${p(
     duration,
-    ` and lasted ${duration} day${duration > 1 ? 's' : ''}`
+    ` and lasted ${duration} day${duration > 1 ? "s" : ""}`
   )}. ${desc}
 
 <h5 class="primary-text">Incident characteristics</h5>
 
-The incident was initiated by a${initialIncident && /^[aeiuo]/i.test(initialIncident) ? 'n' : ''} ${p(
-    initialIncident
-  )}${oi && oi.length > 0 ? formatOptional({ prepend: ', causing the following other incidents: ' }, oi) : ''}.
+The incident was initiated by a${
+    initialIncident && /^[aeiuo]/i.test(initialIncident) ? "n" : ""
+  } ${p(initialIncident)}${
+    oi && oi.length > 0
+      ? formatOptional(
+          { prepend: ", causing the following other incidents: " },
+          oi
+        )
+      : ""
+  }.
 
   ${p(incidentInfo)}
   ${p(scale, `The scale of this event was ${scale}.`)} ${p(
@@ -228,7 +260,10 @@ ${p(environment, `- Environmental degradation: ${environment}`)}
 <h5 class="primary-text">Geographical characteristics</h5>
 
 ${p(mc, `The event involved the following country/countries: ${mc}. `)}
-${p(intInstitutions, `Including the following international institution(s): ${intInstitutions}. `)}
+${p(
+  intInstitutions,
+  `Including the following international institution(s): ${intInstitutions}. `
+)}
 
 ${scaleExplanation}`;
 
@@ -239,7 +274,10 @@ ${showOrganisations(event)}
 
 <h5 class="primary-text">Critical Crisis Management functions</h5>
 
-The following crisis management functions were of specific interest for adequately handling this event: ${p(cm, cm)}.
+The following crisis management functions were of specific interest for adequately handling this event: ${p(
+    cm,
+    cm
+  )}.
 
 ${p(challengesInfo)}
 
@@ -260,17 +298,17 @@ export const FormattedEvent: FactoryComponent<IFormattedEvent> = () => {
   return {
     view: ({ attrs: { event } }) => {
       const { md, md2 } = formatEvent(event);
-      return m('.row', [
-        m('.col.s12', m(SlimdownView, { md })),
+      return m(".row", [
+        m(".col.s12", m(SlimdownView, { md })),
         location
           ? m(LayoutForm, {
-              form: [{ type: 'map', id: 'location' }] as Form,
+              form: [{ type: "map", id: "location" }],
               obj: event,
               disabled: true,
               context: {},
-            })
+            } as FormAttributes<IEvent>)
           : undefined,
-        m('.col.s12', m(SlimdownView, { md: md2 })),
+        m(".col.s12", m(SlimdownView, { md: md2 })),
       ]);
     },
   };
