@@ -4,7 +4,10 @@ import m from "mithril";
 import "./css/style.css";
 import { dashboardSvc } from "./services/dashboard-service";
 import { Auth } from "./services/login-service";
-// import L from "leaflet";
+import { leafletPlugin } from "mithril-ui-form-leaflet-plugin";
+import { registerPlugin } from "mithril-ui-form";
+
+registerPlugin("map", leafletPlugin); // import L from "leaflet";
 
 // delete (L.Icon.Default.prototype as any)._getIconUrl;
 

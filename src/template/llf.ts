@@ -6,7 +6,6 @@ import { IOrganisation } from "../models/organisation";
 export const veiligheidsregios: { id: string; label: string }[] = [
   { id: "VRAA", label: "Amsterdam-Amstelland" },
   { id: "VRBN", label: "Brabant-Noord" },
-  { id: "VRZL", label: "Limburg-Noord" },
   { id: "VRBZO", label: "Brabant-Zuidoost" },
   { id: "VRD", label: "Drenthe" },
   { id: "VRFL", label: "Flevoland" },
@@ -28,123 +27,123 @@ export const veiligheidsregios: { id: string; label: string }[] = [
   { id: "VRU", label: "Utrecht" },
   { id: "VRZW", label: "Zaanstreek-Waterland" },
   { id: "VRZ", label: "Zeeland" },
-  { id: "VRZHZ", label: "Zuid-Holland zuid" },
+  { id: "VRZHZ", label: "Zuid-Holland Zuid" },
   { id: "VRZL", label: "Zuid-Limburg" },
 ];
 
 export const countries = [
-  {
-    id: "austria",
-    label: "Austria",
-  },
+  // {
+  //   id: "austria",
+  //   label: "Austria",
+  // },
   {
     id: "belgium",
     label: "Belgium",
   },
-  {
-    id: "bulgaria",
-    label: "Bulgaria",
-  },
-  {
-    id: "croatia",
-    label: "Croatia",
-  },
-  {
-    id: "cyprus",
-    label: "Cyprus",
-  },
-  {
-    id: "czech_republic",
-    label: "Czech Republic",
-  },
-  {
-    id: "denmark",
-    label: "Denmark",
-  },
-  {
-    id: "estonia",
-    label: "Estonia",
-  },
-  {
-    id: "finland",
-    label: "Finland",
-  },
-  {
-    id: "france",
-    label: "France",
-  },
+  // {
+  //   id: "bulgaria",
+  //   label: "Bulgaria",
+  // },
+  // {
+  //   id: "croatia",
+  //   label: "Croatia",
+  // },
+  // {
+  //   id: "cyprus",
+  //   label: "Cyprus",
+  // },
+  // {
+  //   id: "czech_republic",
+  //   label: "Czech Republic",
+  // },
+  // {
+  //   id: "denmark",
+  //   label: "Denmark",
+  // },
+  // {
+  //   id: "estonia",
+  //   label: "Estonia",
+  // },
+  // {
+  //   id: "finland",
+  //   label: "Finland",
+  // },
+  // {
+  //   id: "france",
+  //   label: "France",
+  // },
   {
     id: "germany",
     label: "Germany",
   },
-  {
-    id: "greece",
-    label: "Greece",
-  },
-  {
-    id: "hungary",
-    label: "Hungary",
-  },
-  {
-    id: "ireland",
-    label: "Ireland",
-  },
-  {
-    id: "italy",
-    label: "Italy",
-  },
-  {
-    id: "latvia",
-    label: "Latvia",
-  },
-  {
-    id: "lithuania",
-    label: "Lithuania",
-  },
-  {
-    id: "luxembourg",
-    label: "Luxembourg",
-  },
-  {
-    id: "malta",
-    label: "Malta",
-  },
-  {
-    id: "netherlands",
-    label: "Netherlands",
-  },
-  {
-    id: "poland",
-    label: "Poland",
-  },
-  {
-    id: "portugal",
-    label: "Portugal",
-  },
-  {
-    id: "romania",
-    label: "Romania",
-  },
-  {
-    id: "slovakia",
-    label: "Slovakia",
-  },
-  {
-    id: "slovenia",
-    label: "Slovenia",
-  },
-  {
-    id: "spain",
-    label: "Spain",
-  },
-  {
-    id: "sweden",
-    label: "Sweden",
-  },
-  {
-    id: "united_kingdom",
-    label: "United Kingdom",
-  },
+  // {
+  //   id: "greece",
+  //   label: "Greece",
+  // },
+  // {
+  //   id: "hungary",
+  //   label: "Hungary",
+  // },
+  // {
+  //   id: "ireland",
+  //   label: "Ireland",
+  // },
+  // {
+  //   id: "italy",
+  //   label: "Italy",
+  // },
+  // {
+  //   id: "latvia",
+  //   label: "Latvia",
+  // },
+  // {
+  //   id: "lithuania",
+  //   label: "Lithuania",
+  // },
+  // {
+  //   id: "luxembourg",
+  //   label: "Luxembourg",
+  // },
+  // {
+  //   id: "malta",
+  //   label: "Malta",
+  // },
+  // {
+  //   id: "netherlands",
+  //   label: "Netherlands",
+  // },
+  // {
+  //   id: "poland",
+  //   label: "Poland",
+  // },
+  // {
+  //   id: "portugal",
+  //   label: "Portugal",
+  // },
+  // {
+  //   id: "romania",
+  //   label: "Romania",
+  // },
+  // {
+  //   id: "slovakia",
+  //   label: "Slovakia",
+  // },
+  // {
+  //   id: "slovenia",
+  //   label: "Slovenia",
+  // },
+  // {
+  //   id: "spain",
+  //   label: "Spain",
+  // },
+  // {
+  //   id: "sweden",
+  //   label: "Sweden",
+  // },
+  // {
+  //   id: "united_kingdom",
+  //   label: "United Kingdom",
+  // },
 ];
 
 const languages = [
@@ -402,9 +401,9 @@ const societalSectors = [
   { id: "government_administr.", label: "Overheid/Administrie" },
   { id: "industry", label: "Industrie" },
   { id: "legal_order", label: "Juridisch" },
-  { id: "media_culture", label: "Media/Cultuut" },
+  { id: "media_culture", label: "Media/Cultuur" },
   { id: "public_health", label: "Volksgezondheid" },
-  { id: "public_order", label: "Openbare orde/veiligheid" },
+  { id: "public_order", label: "Openbare orde & veiligheid" },
   { id: "retail_trade", label: "Handel" },
   { id: "telecom_internet", label: "Telecom/Internet" },
   { id: "transport", label: "Transport" },
@@ -565,9 +564,19 @@ const publicationForm = [
 
 export const eventTypes = [
   { id: "crisis", label: "Incident, crisis of ramp" },
+  { id: "event", label: "Evenement" },
   { id: "prevention", label: "Preventieve activiteit" },
   { id: "test", label: "Test of trial" },
   { id: "training", label: "Training of oefening" },
+];
+
+export const gripLevels = [
+  { id: "grip-0", label: "GRIP-0/n.v.t." },
+  { id: "grip-1", label: "GRIP-1" },
+  { id: "grip-2", label: "GRIP-2" },
+  { id: "grip-3", label: "GRIP-3" },
+  { id: "grip-4", label: "GRIP-4" },
+  { id: "grip-5", label: "GRIP-5" },
 ];
 
 export const cmFunctions = [
@@ -589,7 +598,7 @@ export const cmFunctions = [
   { id: "volunteer_management", label: "Vrijwilligers management" },
   { id: "social_media_mining", label: "Social media mining" },
   { id: "debris", label: "Verwijderen afval" },
-  { id: "restore", label: "Herstellen kritische diensten" },
+  { id: "restore", label: "Herstellen kritieke diensten" },
   { id: "crowd_mgmt", label: "Crowd management" },
   { id: "traffic_mgmt", label: "Verkeersmanagement" },
   { id: "decontamination", label: "Decontaminatie" },
@@ -642,7 +651,7 @@ const lessonForm: UIForm<ILesson> = [
   {
     type: "md",
     value: `##### Verbeterpunten
-Oplossing of oplossingsrichting voor (verdere) verbetering van de effectiviteit van de CM functie.`,
+Oplossing of oplossingsrichting voor (verdere) verbetering van de effectiviteit van het CM proces.`,
   },
   {
     id: "solutionType",
@@ -727,6 +736,7 @@ const scale = [
   { id: "local", label: "Lokaal" },
   { id: "regional", label: "Regionaal" },
   { id: "national", label: "Nationaal" },
+  { id: "across_border", label: "Grensoverschrijdend" },
   { id: "pan_europe", label: "Pan-Europees" },
   { id: "global", label: "Globaal" },
 ];
@@ -740,7 +750,7 @@ const organisationType = [
   { id: "defence", label: "Defencie" },
   { id: "command_centres", label: "Command en/of Control centra" },
   { id: "monitoring_institute", label: "Toezichtshouder" },
-  { id: "cip", label: "Kritische Infrastructuur aanbieder" },
+  { id: "cip", label: "Kritieke Infrastructuur aanbieder" },
   { id: "ngo_volunteer.", label: "NGO/Vrijwilligersorganisatie" },
   { id: "training", label: "Training instituut" },
   { id: "other", label: "Anders" },
@@ -857,26 +867,34 @@ Naam en algemene kenmerken om de gebeurtenis te beschrijven.`,
     options: eventTypes,
   },
   {
+    id: "date",
+    type: "date",
+    label: "Start datum",
+    required: true,
+    className: "col s12 m4",
+  },
+  {
+    id: "duration",
+    type: "number",
+    label: "Duur (in dagen)",
+    value: 1 as any,
+    required: true,
+    className: "col s12 m4",
+  },
+  {
+    id: "level",
+    type: "select",
+    label: "GRIP niveau",
+    required: true,
+    className: "col s12 m4",
+    options: eventTypes,
+  },
+  {
     id: "locationText",
     label: "Locatie van de gebeurtenis",
     required: true,
     type: "textarea",
     className: "col s12",
-  },
-  {
-    id: "date",
-    type: "date",
-    label: "Start datum van de gebeurtenis",
-    required: true,
-    className: "col s12 m6",
-  },
-  {
-    id: "duration",
-    type: "number",
-    label: "Duur van de gebeurtenis (in dagen)",
-    value: 1 as any,
-    required: true,
-    className: "col s12 m6",
   },
   {
     id: "desc",
@@ -893,11 +911,11 @@ Naam en algemene kenmerken om de gebeurtenis te beschrijven.`,
   {
     type: "md",
     value: `#### Incident karakteristieken
-Beschrijving van het verloop van de gebeurtenis: karakteristieken van de incidenten en hun impact op de maatschappij.`,
+Beschrijving van het verloop van de gebeurtenis: met welk incident begon het, welke andere incidenten vloeiden hier uit voort, en wat was hun impact op de maatschappij.`,
   },
   {
     id: "incidentCategory",
-    label: "Initiële incidentcategorie",
+    label: "Incidentcategorie",
     required: true,
     className: "col s12 m6",
     type: "select",
@@ -905,7 +923,7 @@ Beschrijving van het verloop van de gebeurtenis: karakteristieken van de inciden
   },
   {
     id: "initialIncident",
-    label: "Initieel incident",
+    label: "Startincident",
     required: true,
     className: "col s12 m6",
     type: "select",
@@ -913,7 +931,8 @@ Beschrijving van het verloop van de gebeurtenis: karakteristieken van de inciden
   },
   {
     id: "otherIncidents",
-    label: "Andere incidenten",
+    label: "Vervolgincidenten",
+    description: "_Neveneffecten of ketenincidenten_",
     className: "col s12",
     multiple: true,
     options: incidentTypes
@@ -933,6 +952,30 @@ Beschrijving van het verloop van de gebeurtenis: karakteristieken van de inciden
     className: "col s6",
     options: scale,
   },
+
+  {
+    id: "progression",
+    label: "Verloop van het incident op hoofdlijnen",
+    repeat: true,
+    pageSize: 20,
+    type: [
+      {
+        id: "time",
+        label: "Tijdstip",
+        type: "time",
+        className: "col s4 m2",
+      },
+      {
+        id: "event",
+        label: "Omschrijving",
+        type: "textarea",
+        className: "col s8 m10",
+      },
+    ],
+  },
+
+  //
+
   { type: "md", value: "#### Aangetaste maatschappelijke sectoren" },
   {
     id: "societalSectors",
@@ -964,7 +1007,6 @@ Beschrijving van de (potentiële) impact van het incident op de maatschappij, ui
     label: "Aantal slachtoffers",
     type: "textarea",
     placeholder: "Overleden of verwonde personen.",
-    description: "Overleden of verwonde personen._",
   },
   {
     id: "damage",
@@ -1012,17 +1054,26 @@ Geographic dimensies van het verloop van de gebeurtenis.`,
   //   options: internationalDimension,
   // },
   {
-    id: "memberCountries",
+    id: "vrs",
     label: "Betrokken veiligheidsregio's",
     required: true,
     type: "options",
-    checkboxClass: "col s6 m4 xl3",
+    checkboxClass: "col s6 m4",
     options: veiligheidsregios,
+  },
+  {
+    id: "memberCountries",
+    label: "Betrokken landen",
+    multiple: true,
+    type: "select",
+    options: countries,
+    className: "col s6",
   },
   {
     id: "otherCountries",
     label: "Andere landen",
-    type: "textarea",
+    type: "text",
+    className: "col s6",
   },
   {
     id: "intInstitutions",
@@ -1064,10 +1115,10 @@ Lijst van organisaties die betrokken waren tijdens de uitvoering van een of meer
   },
 
   // Impact & Challenges
-  { id: "impact", type: "section", label: "Kritische CM functie(s)" },
+  { id: "impact", type: "section", label: "Kritieke CM-processen" },
   {
     type: "md",
-    value: "#### Kritische Crisismanagement functies",
+    value: "#### Kritieke crisismanagementprocessen",
   },
   {
     id: "cmFunctions",

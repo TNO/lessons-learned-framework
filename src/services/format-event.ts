@@ -2,7 +2,7 @@ import m, { Attributes, FactoryComponent } from "mithril";
 import { FormAttributes, LayoutForm, SlimdownView } from "mithril-ui-form";
 import { IEvent, IMultimedia, IPublication } from "../models";
 import { ILesson } from "../models/lesson";
-import { formatOptional } from "../utils";
+import { formatOptional, i18n } from "../utils";
 
 /** Print optional */
 const p = (val: string | number | Date | undefined, output?: string) =>
@@ -27,15 +27,14 @@ const l = (val: undefined | string | string[]) => {
 const showEditors = (event: Partial<IEvent>) => {
   const { editors } = event;
   return editors
-    ? `<p class="center-align"><i>by ${editors
+    ? `<p class="center-align"><i>door ${editors
         .filter(Boolean)
         .map(
           (e) =>
             `${e.name}${formatOptional(
               { brackets: true },
               e.role,
-              e.organisation,
-              e.country
+              e.organisation
             )}`
         )
         .join(", ")}</i></p>`
@@ -62,12 +61,12 @@ const showOrganisations = (event: Partial<IEvent>) => {
 const showLessons = (event: Partial<IEvent>) => {
   const { lessons } = event;
   if (!lessons || lessons.length === 0) {
-    return "No lessons have been learned yet.";
+    return "Er werden nog geen lessen aangemaakt.";
   }
   const obs = ({ effectiveness, observationInfo }: ILesson) =>
-    `Observations during the event of this CM function shows that its effectiveness was '${p(
+    `Waarnemingen gedurende de gebeurtenis van deze CM processen toont dat de effectiviteit '${p(
       effectiveness
-    )}'. ${p(observationInfo)}`;
+    )}' was. ${p(observationInfo)}`;
   const createLesson = (les: ILesson, index: number) => {
     const {
       name,
@@ -88,32 +87,30 @@ const showLessons = (event: Partial<IEvent>) => {
     const st = l(solutionType);
     const intro =
       index === 0
-        ? `From the evaluation of this event, the following ${
-            lessons.length === 1
-              ? "lesson has"
-              : `${lessons.length} lessons have`
-          } been learned.`
+        ? `Na aanleiding van de evaluatie van deze gebeurtenis werd${
+            lessons.length > 1 ? "en" : ""
+          } de volgende ${
+            lessons.length === 1 ? "les" : `${lessons.length} lessen`
+          } geleerd.`
         : "";
 
     return (
       `${intro}
-<h6 class="primary-text">Lesson ${index + 1}: ${p(name)}</h6>
+<h6 class="primary-text">Les ${index + 1}: ${p(name)}</h6>
 
-This lesson addresses in particular CM function(s) ‘${p(cmFunction)}’.
+Deze les richt zich in het bijzonder op het CM proces ‘${p(cmFunction)}’.
 
 ${obs(les)}
 
-Possible solution or improvement of the CM function(s)’ performance can/has been found in aspects related to: ${p(
-        st
-      )}. ${p(lesson)}
+Mogelijke oplossing of verbetering van het CM proces: ${p(st)}. ${p(lesson)}
 
-The (expected) improvements of the CM function(s)’ performance of implementing such a solution are ${p(
+De verwachtte verbetering van het CM proces bij het implementeren van deze oplossing zijn ${p(
         effectsOnPerformance
       )}. ${p(expectedImprovementsInfo)}
 
-Additionally, the expected impact reductions on the described incident are ${p(
+Additioneel, de verwachtte impactreductie van het beschreven incident zijn ${p(
         victimsImprovements
-      )}.` +
+      )}. ` +
       // ${p(materialDamageImprovements, `- Material damage reduction: ${materialDamageImprovements}`)}
       // ${p(ciLossImprovements, `- Loss of services reduction: ${ciLossImprovements}`)}
       // ${p(socEcoDisruptionImprovements, `- Social/economic reduction: ${socEcoDisruptionImprovements}`)}
@@ -142,7 +139,7 @@ const showSources = (event: Partial<IEvent>) => {
     }${pub.author ? `, ${pub.author}` : ""}${
       pub.url ? `, ${formatUrl(pub.url)}` : ""
     }${formatOptional(
-      { brackets: true, prepend: "original title: " },
+      { brackets: true, prepend: "originele titel: " },
       pub.orgTitle,
       /other/i.test(pub.language || "") ? pub.otherLanguage : pub.language
     )}`;
@@ -151,7 +148,7 @@ const showSources = (event: Partial<IEvent>) => {
     `${formatUrl(mm.url)}${
       mm.yearOfPublication ? ` (${mm.yearOfPublication})` : ""
     }${mm.desc ? `, ${mm.desc}` : ""}${
-      mm.owner ? ` (owned by ${mm.owner})` : ""
+      mm.owner ? ` (bezig van ${mm.owner})` : ""
     }`;
 
   const ps = publications
@@ -171,10 +168,10 @@ const showSources = (event: Partial<IEvent>) => {
 
   return ps || ms
     ? `
-<h5 class="primary-text">Publications</h5>
+<h5 class="primary-text">Publicaties</h5>
 ${ps}
 
-<h5 class="primary-text">Multimedia sources</h5>
+<h5 class="primary-text">Multimedia bronnen</h5>
 ${ms}
 `
     : "";
@@ -221,60 +218,57 @@ const formatEvent = (event: IEvent) => {
 
 ${showEditors(event)}
 
-${p(eventType, `Type of event: ${eventType}`)}
+${p(eventType, `Type gebeurtenis: ${eventType}`)}
 
-The event took place at ${p(locationText)} ${p(
+De gebeurtenis vond plaats op ${p(locationText)} ${p(
     startDate,
-    `on ${new Date(startDate).toDateString()}`
+    `om ${new Date(startDate).toDateString()}`
   )}${p(
     duration,
-    ` and lasted ${duration} day${duration > 1 ? "s" : ""}`
+    ` en duurde ${duration} dag${duration > 1 ? "en" : ""}`
   )}. ${desc}
 
-<h5 class="primary-text">Incident characteristics</h5>
+<h5 class="primary-text">Incident kenmerken</h5>
 
-The incident was initiated by a${
+Het incident werd veroorzaakt door${
     initialIncident && /^[aeiuo]/i.test(initialIncident) ? "n" : ""
   } ${p(initialIncident)}${
     oi && oi.length > 0
       ? formatOptional(
-          { prepend: ", causing the following other incidents: " },
+          { prepend: ", en veroorzaakte de volgende incidenten: " },
           oi
         )
       : ""
   }.
 
   ${p(incidentInfo)}
-  ${p(scale, `The scale of this event was ${scale}.`)} ${p(
+  ${p(scale, `De schaal van deze gebeurtenis was ${scale}.`)} ${p(
     ss,
-    `It affected several societal sectors, notably ${ss}.`
+    `Het trof verschillende maatschappelijke sectoren, met name ${ss}.`
   )} ${p(societalSectorsAdditional)} ${p(societalSectorsInfo)}
 
-The (potential) impact of the incident was as follows:
-${p(victims, `- Number of victims/casualties: ${victims}`)}
-${p(damage, `- Material damage: ${damage}`)}
-${p(lossOfServices, `- Loss of services: ${lossOfServices}`)}
-${p(disruption, `- Social/economic disruption: ${disruption}`)}
-${p(environment, `- Environmental degradation: ${environment}`)}
+De (potentiële) impact van het incident was als volgt:
+${p(victims, `- Aantal slachtoffers: ${victims}`)}
+${p(damage, `- Materiële schade: ${damage}`)}
+${p(lossOfServices, `- Uitval van diensten: ${lossOfServices}`)}
+${p(disruption, `- Sociale/economische disruptie: ${disruption}`)}
+${p(environment, `- Milieuschade: ${environment}`)}
 
-<h5 class="primary-text">Geographical characteristics</h5>
+<h5 class="primary-text">Geografische kenmerken</h5>
 
-${p(mc, `The event involved the following country/countries: ${mc}. `)}
-${p(
-  intInstitutions,
-  `Including the following international institution(s): ${intInstitutions}. `
-)}
+${p(mc, `De gebeurtenis betrof de volgende veiligheidsregio('s): ${mc}. `)}
+${p(intInstitutions, `Inclusief de volgende instituten: ${intInstitutions}. `)}
 
 ${scaleExplanation}`;
 
-  const md2 = `<h5 class="primary-text">Involved organisations</h5>
+  const md2 = `<h5 class="primary-text">Betrokken organisaties</h5>
 
-The following organisations were involved for effectively resolving this event:
+De volgende organisaties waren betrokken bij het effectief oplossen van deze gebeurtenis:
 ${showOrganisations(event)}
 
-<h5 class="primary-text">Critical Crisis Management functions</h5>
+<h5 class="primary-text">Kritieke Crisis Management processen</h5>
 
-The following crisis management functions were of specific interest for adequately handling this event: ${p(
+De volgende crisis management processen waren van specifieke interesse voor het adequaat afhandelen van deze gebeurtenis: ${p(
     cm,
     cm
   )}.
@@ -306,6 +300,7 @@ export const FormattedEvent: FactoryComponent<IFormattedEvent> = () => {
               obj: event,
               disabled: true,
               context: {},
+              i18n,
             } as FormAttributes<IEvent>)
           : undefined,
         m(".col.s12", m(SlimdownView, { md: md2 })),

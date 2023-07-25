@@ -148,7 +148,7 @@ export const EventsList = () => {
               }),
               m(Select, {
                 placeholder: "Kies één of meer",
-                label: "CM function",
+                label: "CM proces",
                 checkedId: cmFunctionFilter,
                 options: cmFunctions,
                 iconName: "notifications_active",

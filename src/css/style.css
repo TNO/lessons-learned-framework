@@ -152,3 +152,9 @@ a,
 .input-field.options > label {
   top: -2.5rem;
 }
+
+#progression {
+  background-color: lightblue;
+  padding: 2px 35px 0 10px;
+  border-radius: 10px;
+}

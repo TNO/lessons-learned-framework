@@ -45,13 +45,14 @@
     "keycloak-js": "22.0.1",
     "leaflet": "^1.9.4",
     "leaflet-draw": "^1.0.4",
-    "material-icons": "^1.13.8",
+    "material-icons": "^1.13.9",
     "materialize-css": "^1.0.0",
     "mithril": "^2.2.2",
     "mithril-leaflet": "^0.4.3",
     "mithril-materialized": "^1.0.1",
     "mithril-ui-form": "^1.9.1",
-    "rest-easy-loki": "^1.5.4",
+    "mithril-ui-form-leaflet-plugin": "0.5.3",
+    "rest-easy-loki": "^1.5.5",
     "slimdown-js": "^0.7.1"
   },
   "devDependencies": {
@@ -60,7 +61,7 @@
     "@types/materialize-css": "^1.0.11",
     "@types/mithril": "^2.0.12",
     "concurrently": "^8.2.0",
-    "@rspack/cli": "0.2.8",
+    "@rspack/cli": "0.2.9",
     "rimraf": "^5.0.1",
     "typescript": "^5.1.6"
   }

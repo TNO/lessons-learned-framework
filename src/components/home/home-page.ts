@@ -2,9 +2,8 @@ import m from "mithril";
 import { Button, Icon } from "mithril-materialized";
 import { SlimdownView } from "mithril-ui-form";
 import background from "../../assets/background.jpg";
-import driverLogo from "../../assets/driver-logo-compact2.png";
-import euLogo from "../../assets/eu-flag-logo.png";
 import logo from "../../assets/logo_white.svg";
+import tno from "../../assets/tno.svg";
 import { Dashboards, dashboardSvc } from "../../services/dashboard-service";
 
 export const HomePage = () => ({
@@ -15,8 +14,14 @@ export const HomePage = () => ({
         m(".nav-wrapper", [
           m(
             "a.hide-on-med-and-down.brand-logo[href=#]",
-            m(`img[width=70][height=70][src=${logo}]`, {
+            m(`img[width=70][height=70][src=${logo}][alt=L3]`, {
               style: "margin: -3px 0 0 10px;",
+            })
+          ),
+          m(
+            "a.hide-on-med-and-down.right[href=https://www.tno.nl][target=_blank]",
+            m(`img[width=150][height=70][src=${tno}][alt=TNO]`, {
+              style: "margin: 0 10px;",
             })
           ),
           m(

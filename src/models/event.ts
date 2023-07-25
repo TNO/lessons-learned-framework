@@ -11,6 +11,11 @@ export interface ILokiObj {
   };
 }
 
+export type TimedEvent = {
+  time: Date;
+  event: string;
+};
+
 export interface IEvent extends ILokiObj {
   [key: string]: any;
   /** Owner of the document */
@@ -50,6 +55,7 @@ export interface IEvent extends ILokiObj {
   intInstitutions: string;
   otherIncidents: string | string[];
   publications: IPublication[];
+  progression: TimedEvent[];
   scale: string;
   scaleExplanation: string;
   societalSectors: string[];

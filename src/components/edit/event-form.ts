@@ -7,7 +7,7 @@ import { EventsSvc } from "../../services";
 import { Dashboards, dashboardSvc } from "../../services/dashboard-service";
 import { Auth } from "../../services/login-service";
 import { llf } from "../../template/llf";
-import { capitalizeFirstLetter } from "../../utils";
+import { capitalizeFirstLetter, i18n } from "../../utils";
 import { CircularSpinner } from "../ui/preloader";
 
 const log = console.log;
@@ -78,7 +78,7 @@ export const EventForm = () => {
       const section = m.route.param("section") || sections[0].id;
       return m(".row", [
         m(
-          ".col.s12.l3",
+          ".col.s12.l3.xl2",
           m(
             "ul#slide-out.sidenav.sidenav-fixed",
             {
@@ -174,7 +174,7 @@ export const EventForm = () => {
             ]
           )
         ),
-        m(".col.s12.l9", [
+        m(".col.s12.l9.xl10", [
           m(LayoutForm, {
             key: section,
             form,
@@ -188,24 +188,25 @@ export const EventForm = () => {
             },
             context,
             section,
+            i18n,
           } as FormAttributes<Partial<IEvent>>),
         ]),
         m(ModalPanel, {
           id: "delete-event",
-          title: "Delete event",
+          title: "Verwijder gebeurtenis",
           description:
-            "Do you really want to delete this event - there is no way back?",
+            "Wilt u daadwerkelijk deze gebeurtenis verwijderen? Dit kan niet teruggedraaid worden.",
           options: { opacity: 0.7 },
           buttons: [
             {
-              label: "Delete",
+              label: "Verwijder",
               onclick: async () => {
                 EventsSvc.delete(event.$loki);
                 close();
               },
             },
             {
-              label: "Discard",
+              label: "Afbreken",
             },
           ],
         }),

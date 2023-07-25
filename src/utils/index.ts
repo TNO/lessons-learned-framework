@@ -1,4 +1,5 @@
-import { IEvent } from '../models';
+import { I18n } from "mithril-ui-form";
+import { IEvent } from "../models";
 
 /**
  * Create a GUID
@@ -7,11 +8,11 @@ import { IEvent } from '../models';
  * @returns RFC4122 version 4 compliant GUID
  */
 export const uuid4 = () => {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
     // tslint:disable-next-line:no-bitwise
     const r = (Math.random() * 16) | 0;
     // tslint:disable-next-line:no-bitwise
-    const v = c === 'x' ? r : (r & 0x3) | 0x8;
+    const v = c === "x" ? r : (r & 0x3) | 0x8;
     return v.toString(16);
   });
 };
@@ -23,22 +24,23 @@ export const uuid4 = () => {
  * @returns RFC4122 version 4 compliant GUID
  */
 export const uniqueId = () => {
-  return 'idxxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, c => {
+  return "idxxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx".replace(/[xy]/g, (c) => {
     // tslint:disable-next-line:no-bitwise
     const r = (Math.random() * 16) | 0;
     // tslint:disable-next-line:no-bitwise
-    const v = c === 'x' ? r : (r & 0x3) | 0x8;
+    const v = c === "x" ? r : (r & 0x3) | 0x8;
     return v.toString(16);
   });
 };
 
-export const capitalizeFirstLetter = (s?: string) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : '');
+export const capitalizeFirstLetter = (s?: string) =>
+  s ? s.charAt(0).toUpperCase() + s.slice(1) : "";
 
 export const toLetters = (num: number): string => {
   const mod = num % 26;
   // tslint:disable-next-line:no-bitwise
   let pow = (num / 26) | 0;
-  const out = mod ? String.fromCharCode(64 + mod) : (--pow, 'Z');
+  const out = mod ? String.fromCharCode(64 + mod) : (--pow, "Z");
   return pow ? toLetters(pow) + out : out;
 };
 
@@ -52,7 +54,12 @@ export const toLetters = (num: number): string => {
  * @param {number} [step=1]
  * @returns
  */
-export const range = (from: number, to: number, count: number = to - from + 1, step: number = 1) => {
+export const range = (
+  from: number,
+  to: number,
+  count: number = to - from + 1,
+  step: number = 1
+) => {
   // See here: http://stackoverflow.com/questions/3746725/create-a-javascript-array-containing-1-n
   // let a = Array.apply(null, {length: n}).map(Function.call, Math.random);
   const a: number[] = new Array(count);
@@ -85,7 +92,10 @@ export const nameAndDescriptionFilter = (filterValue?: string) => {
  * Function to filter on a named type.
  * @param filterValue Filter text
  */
-export const typeFilter = (propName: keyof IEvent, filterValue?: Array<string | number>) => {
+export const typeFilter = (
+  propName: keyof IEvent,
+  filterValue?: Array<string | number>
+) => {
   if (!filterValue || filterValue.length === 0) {
     return () => true;
   }
@@ -93,7 +103,11 @@ export const typeFilter = (propName: keyof IEvent, filterValue?: Array<string | 
     ? (c: Partial<IEvent>) =>
         c.hasOwnProperty(propName) &&
         (c[propName] instanceof Array
-          ? filterValue.reduce((acc, fv) => acc || (c[propName] as Array<string | number>).indexOf(fv) >= 0, false)
+          ? filterValue.reduce(
+              (acc, fv) =>
+                acc || (c[propName] as Array<string | number>).indexOf(fv) >= 0,
+              false
+            )
           : filterValue.indexOf(c[propName] as string) >= 0)
     : (c: Partial<IEvent>) =>
         c.hasOwnProperty(propName) &&
@@ -102,13 +116,16 @@ export const typeFilter = (propName: keyof IEvent, filterValue?: Array<string | 
           : c[propName] === filterValue);
 };
 
-const getIncidentTypes = ({ initialIncident, otherIncidents }: Partial<IEvent>) => {
+const getIncidentTypes = ({
+  initialIncident,
+  otherIncidents,
+}: Partial<IEvent>) => {
   const incidents = [] as string[];
   if (initialIncident) {
     incidents.push(initialIncident);
   }
   if (otherIncidents) {
-    if (typeof otherIncidents === 'string') {
+    if (typeof otherIncidents === "string") {
       incidents.push(otherIncidents);
     } else {
       incidents.push(...otherIncidents);
@@ -127,7 +144,11 @@ export const incidentFilter = (filterValue?: string | string[]) => {
   }
   // console.log('Filtering incidents: ' + filterValue);
   return filterValue instanceof Array
-    ? (c: Partial<IEvent>) => getIncidentTypes(c).reduce((acc, fv) => acc || filterValue.indexOf(fv) >= 0, false)
+    ? (c: Partial<IEvent>) =>
+        getIncidentTypes(c).reduce(
+          (acc, fv) => acc || filterValue.indexOf(fv) >= 0,
+          false
+        )
     : (c: Partial<IEvent>) => getIncidentTypes(c).indexOf(filterValue) >= 0;
 };
 
@@ -138,16 +159,20 @@ export const incidentFilter = (filterValue?: string | string[]) => {
 export const unCamelCase = (str?: string) =>
   str
     ? str
-        .replace(/([a-z])([A-Z])/g, '$1 $2') // insert a space between lower & upper
-        .replace(/\b([A-Z]+)([A-Z])([a-z])/, '$1 $2$3') // space before last upper in a sequence followed by lower
-        .replace(/^./, char => char.toUpperCase()) // uppercase the first character
-    : '';
+        .replace(/([a-z])([A-Z])/g, "$1 $2") // insert a space between lower & upper
+        .replace(/\b([A-Z]+)([A-Z])([a-z])/, "$1 $2$3") // space before last upper in a sequence followed by lower
+        .replace(/^./, (char) => char.toUpperCase()) // uppercase the first character
+    : "";
 
-export const deepEqual = <T extends { [key: string]: any }>(x?: T, y?: T): boolean => {
+export const deepEqual = <T extends { [key: string]: any }>(
+  x?: T,
+  y?: T
+): boolean => {
   const tx = typeof x;
   const ty = typeof y;
-  return x && y && tx === 'object' && tx === ty
-    ? Object.keys(x).length === Object.keys(y).length && Object.keys(x).every(key => deepEqual(x[key], y[key]))
+  return x && y && tx === "object" && tx === ty
+    ? Object.keys(x).length === Object.keys(y).length &&
+        Object.keys(x).every((key) => deepEqual(x[key], y[key]))
     : x === y;
 };
 
@@ -158,9 +183,10 @@ export const deepEqual = <T extends { [key: string]: any }>(x?: T, y?: T): boole
 // console.log(`${++i}: ${deepEqual({ a: 'foo', b: 'bar' }, { b: 'bar', a: 'foo' })}`);
 
 /** Remove paragraphs <p> and </p> and the beginning and end of a string. */
-export const removeParagraphs = (s: string) => s.replace(/<\/?p>/g, '');
+export const removeParagraphs = (s: string) => s.replace(/<\/?p>/g, "");
 
-export const removeHtml = (s: string) => s.replace(/<\/?[0-9a-zA-Z=\[\]_ \-"]+>/gm, '').replace(/&quot;/gi, '"');
+export const removeHtml = (s: string) =>
+  s.replace(/<\/?[0-9a-zA-Z=\[\]_ \-"]+>/gm, "").replace(/&quot;/gi, '"');
 
 /**
  * Join a list of items with a comma.
@@ -170,13 +196,13 @@ export const formatOptional = (
   options: { brackets?: boolean; prepend?: string; append?: string },
   ...items: Array<string | number | undefined>
 ) => {
-  const { brackets, prepend = '', append = '' } = options;
-  const f = items.filter(i => typeof i !== 'undefined' && i !== '');
+  const { brackets, prepend = "", append = "" } = options;
+  const f = items.filter((i) => typeof i !== "undefined" && i !== "");
   if (!f || f.length === 0) {
-    return '';
+    return "";
   }
-  const txt = `${prepend}${f.join(', ')}${append}`;
-  return f.length === 0 ? '' : brackets ? ` (${txt})` : txt;
+  const txt = `${prepend}${f.join(", ")}${append}`;
+  return f.length === 0 ? "" : brackets ? ` (${txt})` : txt;
 };
 
 export const debounce = (func: (...args: any) => void, timeout: number) => {
@@ -187,4 +213,25 @@ export const debounce = (func: (...args: any) => void, timeout: number) => {
       func(...args);
     }, timeout);
   };
+};
+
+export const i18n: I18n = {
+  /** Label for the edit button of the RepeatList */
+  editRepeat: "Bewerk",
+  /** Label for the create button of the RepeatList */
+  createRepeat: "Nieuw",
+  /** Label for the delete button of the RepeatList */
+  deleteItem: "Verwijder",
+  /** Label for the agree button of the RepeatList */
+  agree: "Ja",
+  /** Label for the disagree button of the RepeatList */
+  disagree: "Nee",
+  /** Pick one */
+  pickOne: "Kies één",
+  /** Pick one or more */
+  pickOneOrMore: "Kies één of meer",
+  /** Cancel button text */
+  cancel: "Afbreken",
+  /** Save button text */
+  save: "Opslaan",
 };
