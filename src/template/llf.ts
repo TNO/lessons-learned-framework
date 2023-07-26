@@ -4,31 +4,31 @@ import { ILesson } from "../models/lesson";
 import { IOrganisation } from "../models/organisation";
 
 export const veiligheidsregios: { id: string; label: string }[] = [
-  { id: "VRAA", label: "Amsterdam-Amstelland" },
-  { id: "VRBN", label: "Brabant-Noord" },
-  { id: "VRBZO", label: "Brabant-Zuidoost" },
-  { id: "VRD", label: "Drenthe" },
-  { id: "VRFL", label: "Flevoland" },
-  { id: "VRF", label: "Fryslân" },
-  { id: "VRGM", label: "Gelderland-Midden" },
-  { id: "VRGZ", label: "Gelderland-Zuid" },
-  { id: "VRGV", label: "Gooi en Vechtstreek" },
-  { id: "VRG", label: "Groningen" },
-  { id: "VRH", label: "Haaglanden" },
-  { id: "VRHM", label: "Hollands Midden" },
-  { id: "VRIJ", label: "IJsselland" },
-  { id: "VRK", label: "Kennemerland" },
-  { id: "VRLN", label: "Limburg-Noord" },
-  { id: "VRMWB", label: "Midden en West-Brabant" },
-  { id: "VRNOG", label: "Noord- en Oost-Gelderland" },
-  { id: "VRNHN", label: "Noord-Holland Noord" },
-  { id: "VRRR", label: "Rotterdam-Rijnmond" },
-  { id: "VRT", label: "Twente" },
-  { id: "VRU", label: "Utrecht" },
-  { id: "VRZW", label: "Zaanstreek-Waterland" },
-  { id: "VRZ", label: "Zeeland" },
-  { id: "VRZHZ", label: "Zuid-Holland Zuid" },
-  { id: "VRZL", label: "Zuid-Limburg" },
+  { id: "vr01", label: "01 Groningen" },
+  { id: "vr02", label: "02 Fryslân" },
+  { id: "vr03", label: "03 Drenthe" },
+  { id: "vr04", label: "04 IJsselland" },
+  { id: "vr05", label: "05 Twente" },
+  { id: "vr06", label: "06 Noord- en Oost-Gelderland" },
+  { id: "vr07", label: "07 Gelderland-Midden" },
+  { id: "vr08", label: "08 Gelderland-Zuid" },
+  { id: "vr09", label: "09 Utrecht" },
+  { id: "vr10", label: "10 Noord-Holland Noord" },
+  { id: "vr11", label: "11 Zaanstreek-Waterland" },
+  { id: "vr12", label: "12 Kennemerland" },
+  { id: "vr13", label: "13 Amsterdam-Amstelland" },
+  { id: "vr14", label: "14 Gooi en Vechtstreek" },
+  { id: "vr15", label: "15 Haaglanden" },
+  { id: "vr16", label: "16 Hollands Midden" },
+  { id: "vr17", label: "17 Rotterdam-Rijnmond" },
+  { id: "vr18", label: "18 Zuid-Holland Zuid" },
+  { id: "vr19", label: "19 Zeeland" },
+  { id: "vr20", label: "20 Midden- en West-Brabant" },
+  { id: "vr21", label: "21 Brabant-Noord" },
+  { id: "vr22", label: "22 Brabant-Zuidoost" },
+  { id: "vr23", label: "23 Limburg-Noord" },
+  { id: "vr24", label: "24 Zuid-Limburg" },
+  { id: "vr25", label: "25 Flevoland" },
 ];
 
 export const countries = [
@@ -38,7 +38,7 @@ export const countries = [
   // },
   {
     id: "belgium",
-    label: "Belgium",
+    label: "België",
   },
   // {
   //   id: "bulgaria",
@@ -74,7 +74,7 @@ export const countries = [
   // },
   {
     id: "germany",
-    label: "Germany",
+    label: "Duitsland",
   },
   // {
   //   id: "greece",
@@ -732,13 +732,14 @@ const incidentCategories = [
   { id: "technical", label: "Technologisch/menselijk falen" },
   { id: "attack", label: "Opzettelijk incident" },
 ];
+
+/** Scale of the incident */
 const scale = [
   { id: "local", label: "Lokaal" },
   { id: "regional", label: "Regionaal" },
+  { id: "multi_regions", label: "Bovenregionaal" },
   { id: "national", label: "Nationaal" },
-  { id: "across_border", label: "Grensoverschrijdend" },
-  { id: "pan_europe", label: "Pan-Europees" },
-  { id: "global", label: "Globaal" },
+  { id: "international", label: "Internationaal" },
 ];
 const organisationType = [
   { id: "authority", label: "Autoriteit" },
@@ -1058,7 +1059,7 @@ Geographic dimensies van het verloop van de gebeurtenis.`,
     label: "Betrokken veiligheidsregio's",
     required: true,
     type: "options",
-    checkboxClass: "col s6 m4",
+    checkboxClass: "col s6",
     options: veiligheidsregios,
   },
   {

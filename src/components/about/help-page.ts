@@ -2,41 +2,43 @@ import m from "mithril";
 import { SlimdownView } from "mithril-ui-form";
 import l3 from "../../assets/l3-schema.png";
 
-const md = `<h4 class="primary-text">Explanation of the Lessons Learned Library</h4>
-<h5 class="primary-text">Objective</h5>
+const md = `<h4 class="primary-text">Uitleg van de Lessons Learned Library</h4>
+<h5 class="primary-text">Doel</h5>
 
-The Lessons Learned Library (L3) aims to support organisations in editing, maintaining, consulting and sharing lessons within the domain of crisis management (CM) and disaster risk reduction (DRR) in Europe. Thereby sharing of lessons is not strictly limited to one organisation. L3 is especially intended to share lessons across organisations, across sectors, and across countries with the ultimate goal to improve CM and DRR in Europe by learning from each other’s experiences.
+De Lessons Learned Library (L3) is een zogenaamde ‘repository’, een soort van online bibliotheek. De L3 is bedoeld om veiligheidsregio’s en andere organisaties die betrokken zijn bij rampenbestrijding en crisismanagement te ondersteunen bij het bewerken, onderhouden, raadplegen en delen van belangrijke positieve en negatieve ervaringen: lessen. Denk aan lessen omtrent de inzet of samenwerking tijdens een groot incident of een andere activiteit zoals een multidisciplinaire oefening. Hierbij is het delen van lessen niet strikt beperkt tot één organisatie. L3 is niet alleen bedoeld om lessen te delen binnen en tussen veiligheidsregio’s maar ook met organisaties zoals gemeenten, hulpdiensten en andere instanties die betrokken zijn bij rampenbestrijding en crisisbeheersing, met als doel om de aanpak van grote incidenten, rampen en crises in Nederland te verbeteren door het leren en gebruikmaken van elkaars ervaringen.
 
-Lessons may be collected from various types of events: routine, every day operations, near incidents, crisis situations, training and exercises, experiments and tests, but also from risk management studies or other preventive activities. Learning lessons can be considered as a structured approach to produce and apply experience-based knowledge to develop and improve doctrines, organisations, training, equipment, leadership, personnel and facilities to achieve more effective, efficient and safe operations.
+Lessen kunnen worden verzameld uit verschillende soorten gebeurtenissen: routinematige, dagelijkse operaties, bijna-incidenten, crisissituaties, trainingen en oefeningen, experimenten en tests, maar ook uit risicomanagement of andere preventieve activiteiten. Het leren van lessen kan worden beschouwd als een gestructureerde aanpak om op ervaring gebaseerde kennis vast te leggen. Dit kan worden toegepast om doctrines, organisaties, trainingen, uitrusting, leiderschap, personeel en faciliteiten te ontwikkelen en te verbeteren, met als doel om effectievere, efficiëntere en veiligere operaties te realiseren.
 
-In simple terms, a lesson is a set of answers to questions such as: ‘What was the situation?’, ‘What was the impact?’, ‘What went well in emergency management and is worthwhile to implement?’, or ‘What went wrong and which improvements are needed?’. To this purpose, users can provide precious information and lessons from events by adding a new event to the repository. By filling out a limited number of forms collected data and experiences can be shared with other emergency management communities in Europe.
+In eenvoudige bewoordingen is een les een reeks antwoorden op vragen zoals: 'Wat was de situatie?', 'Wat was de impact?', 'Wat ging goed in de aanpak van de situatie en is de moeite waard om te implementeren?' of 'Wat ging er mis en welke verbeteringen zijn nodig?'. Gebruikers kunnen waardevolle informatie en lessen van gebeurtenissen verstrekken door een nieuwe gebeurtenis aan de bibliotheek toe te voegen. Door het invullen van een gelimiteerd aantal datavelden kunnen gegevens en ervaringen worden gedeeld met andere gemeenschappen voor noodbeheer in Nederland.
 
-Lessons may be of varying nature and of mixed interest outside the organisation or sector where they have been collected. Therefore, a filtering mechanism enables users to select the kind of information they would like to consult: information about an event that took place (e.g. a Trial in the DRIVER+ project), lessons from a particular type of event (e.g. exercises),  from certain types of incidents (e.g. forest fires or bomb attacks), or from specific crisis management functions (e.g. evacuation or situation assessment).
+Lessen kunnen van uiteenlopende aard of meer of minder van belang zijn buiten de organisatie of sector waar ze zijn verzameld. Daarom stelt een filtersysteem gebruikers in staat om het soort informatie te selecteren dat ze willen raadplegen: informatie over een specifieke gebeurtenis (bijv. intocht van sinterklaas), lessen van een bepaald type gebeurtenis (bijv. oefeningen), bepaalde soorten incidenten (bijv. bosbranden of bomaanslagen), of van specifieke crisismanagementprocessen (bijv. evacuatie of situatiebeoordeling).`;
 
-<h5 class="primary-text">Functionalities and structure</h5>
+const md2 = `<h5 class="primary-text">Functionaliteiten en structuur</h5>
 
-The main functionalities of the L3 are to add and edit crisis events and associated lessons from these events, and to find and consult specific events or lessons. Because the aim of the L3 is to share lessons across the CM community throughout Europe the user interface is in English. For the same reason users are encouraged (but are not obliged) to provide their information on events and lessons in English as well.
+De belangrijkste functionaliteiten van de L3 zijn enerzijds het toevoegen en bewerken van gebeurtenissen en de bijbehorende lessen op basis van eigen ervaringen, en anderzijds het vinden en raadplegen van specifieke gebeurtenissen en lessen die andere collega-organisaties hebben gedeeld.
 
-The L3 contains a set of events and their associated lessons. As depicted in the adjacent figure, each event in the repository can contain 0, 1 or more lessons, while each lesson in its turn can be linked to one or more crisis management functions. Note that a certain CM function can be addressed by different lessons from the same or from other events.`;
+Zoals weergegeven in onderstaand figuur kan elke gebeurtenis in de bibliotheek nul, één of meerdere lessen bevatten. Elke les kan worden gekoppeld aan één of meerdere crisismanagementprocessen. Een bepaald crisismanagementproces (CM-proces) kan dus worden geadresseerd door verschillende lessen van dezelfde gebeurtenis of van andere gebeurtenissen.
 
-const md2 = `<h5 class="primary-text">Events, lessons and CM functions</h5>
+<h5 class="primary-text">Gebeurtenissen, lessen en crisismanagementprocessen</h5>
 
-An **event** is described by:
+Een **gebeurtenis** wordt beschreven door:
 
--	A summary, including some general data such as type of event (e.g. an incident or an exercise), and the date and place of the event.
--	More detailed information on the incident scenario and crisis management operations, such as the initial incident and cascading events, the (potential) impact, a map of the situation, involved organisations, and an overview of critical CM functions that had to be executed.
--	Lessons that have been learned from the event.
+- Een samenvatting inclusief algemene gegevens, zoals het type gebeurtenis (bijv. een incident of een oefening), en de datum, periode en plaats van de gebeurtenis.
+- Meer gedetailleerde informatie over het incidentscenario en crisisbeheeroperaties, zoals het initiële incident en opeenvolgende gebeurtenissen, de (potentiële) impact, een kaart van de situatie, betrokken organisaties, en een overzicht van kritieke crisismanagementprocessen die zijn uitgevoerd (kritiek in de in zin van kenmerkend voor de opgedane positieve of negatieve ervaringen).
+- Lessen die zijn geleerd uit de gebeurtenis.
 
-A **lesson** consists of two sets of information:
+De omschrijving van een **les** bestaat uit twee delen:
 
--	A description of the observation of positive or negative experiences concerning the applicable CM function during the event. This includes the performance of executing the CM function during the event, which is expressed by the effectiveness (adequacy) of executing the CM function on a 5 point-scale.
--	The characterisation of a (potential) solution to improve the CM function based on the experiences during the event. This includes a description of the expected performance improvement of the CM function (also expressed on a 5 point-scale) once it will have been implemented. In addition an indication can be provided of the expected impact reduction by the solution. To this purpose five impact dimensions of UNISDR are used: numbers of victims, material damage, loss of services, social/economic losses, and environmental degradation.
+- Een beschrijving van de waarneming van positieve of negatieve ervaringen met betrekking tot het crisismanagementproces tijdens de gebeurtenis. Dit omvat de prestatie van het uitvoeren van het CM-proces, die wordt uitgedrukt door de effectiviteit (geschiktheid) van het uitvoeren van het CM-proces op een 5-puntsschaal
 
-The L3 includes 24 **CM functions** to choose from. It concerns:
+- De karakterisering van een (potentiële) oplossing om het CM-proces te verbeteren op basis van de opgedane ervaringen tijdens de gebeurtenis. Dit omvat een beschrijving van de verwachte prestatieverbetering van het CM-proces (uitgedrukt op een 5-puntsschaal) zodra deze is geïmplementeerd. Daarnaast kan er een indicatie worden gegeven van de verwachte impactvermindering door de oplossing. Hiertoe worden de vijf impactdimensies van UNISDR gebruikt: aantal slachtoffers, materiële schade, verlies van diensten, sociaal/economisch verlies, en milieudegradatie.
 
--	_Operational CM functions_<br>Alerting (112), Crisis/Risk communication to society, Crowd management, Decontamination, Emergency Health Care, Evacuation & Shelter, Fight/Eliminate incident source (e.g. fire-fighting, stop a leakage), Law enforcement, Provide basic needs to the population, Remove debris, Rescue operations (SAR), and Restore critical services.
--	_Operations enabling or supporting CM functions_<br>Command, Control and Coordination (C3)/Information management, Detection/Surveillance, International collaboration (incl. home nation support), Logistics/Resource management, Situation assessment, Social media mining, Traffic management, Up-scale/Down-scale of emergency services, and Volunteer management.
--	_Preparatory CM functions_<br>Education & Training, Planning/Doctrine development, and Risk assessment.`;
+De L3 bevat 24 **crisismanagementprocessen** om uit te kiezen. Dit betreft:
+
+- *Operationele CM-processen*<br>Waarschuwing (112), Crisis-/risicocommunicatie naar de samenleving, Crowdmanagement, Ontsmetting, Spoedeisende gezondheidszorg, Evacuatie en Schuilplaats, Bestrijden/elimineren van incidentbron (bijv. brandbestrijding, stoppen van een lekkage), Handhaving van de wet, Basisbehoeften voor de bevolking verstrekken, Verwijderen van puin, Reddingsoperaties (SAR), en Herstellen van kritieke diensten.
+- *Operaties die CM-processen mogelijk maken of ondersteunen*<br>Commando, Controle en Coördinatie (C3)/Informatiebeheer, Detectie/Surveillance, Internationale samenwerking (incl. ondersteuning van het thuisland), Logistiek/Middelenbeheer, Situatiebeoordeling, Sociale media-analyse, Verkeersmanagement, Opschalen/Afschalen van noodhulpdiensten, en Vrijwilligersbeheer.
+- *Preparatoire CM-processen*<br>Opleidings en Training, Planning/Doctrinaire ontwikkeling, en Risicobeoordeling.
+`;
 
 export const HelpPage = () => ({
   view: () =>
