@@ -17,7 +17,7 @@ export const EventView: FactoryComponent = () => {
   };
   return {
     oninit: () => {
-      return new Promise(async (resolve, reject) => {
+      return new Promise<void>(async (resolve, reject) => {
         const event = await EventsSvc.load(m.route.param("id")).catch((r) =>
           reject(r)
         );

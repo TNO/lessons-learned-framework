@@ -47,6 +47,8 @@ export interface IEvent extends ILokiObj {
   location: { [key: string]: any };
   locationText: string;
   lossOfServices: string;
+  /** Safetyregions */
+  vrs: string[];
   memberCountries: string[];
   multimedia: IMultimedia[];
   name: string;

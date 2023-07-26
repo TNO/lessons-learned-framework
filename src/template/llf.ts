@@ -176,7 +176,122 @@ const sortByLabel:
     ) => number)
   | undefined = (a, b) => (a.label > b.label ? 1 : a.label < b.label ? -1 : 0);
 
+const incidentCategories = [
+  { id: "natural", label: "Natuurlijk incident" },
+  { id: "urban", label: "Incident in bebouwing" },
+  { id: "chemical", label: "Incident met gevaarlijke stoffen" },
+  { id: "infra", label: "Incident in vitale infrastructuur" },
+  { id: "transport", label: "Transportincident" },
+  { id: "health", label: "Gezondheidsincident" },
+  { id: "social", label: "Sociaal-maatschappelijk incident" },
+  { id: "technical", label: "Technologisch/menselijk falen" },
+  { id: "attack", label: "Opzettelijk incident" },
+];
+
 export const incidentTypes = [
+  { id: "flooding", label: "Overstroming", show: ["incidentCategory=natural"] },
+  { id: "fire", label: "Natuurbrand", show: ["incidentCategory=natural"] },
+  {
+    id: "extreme_weather",
+    label: "Extreem weer",
+    show: ["incidentCategory=natural"],
+  },
+  { id: "earthquake", label: "Aardbeving", show: ["incidentCategory=natural"] },
+  { id: "plague", label: "Plaag", show: ["incidentCategory=natural"] },
+  {
+    id: "animal_disease",
+    label: "Dierziekte",
+    show: ["incidentCategory=natural"],
+  },
+  {
+    id: "fire_object",
+    label: "Brand in kwetsbaar object",
+    show: ["incidentCategory=urban"],
+  },
+  {
+    id: "collapse",
+    label: "Instorting gebouw/kunstwerk",
+    show: ["incidentCategory=urban"],
+  },
+  {
+    id: "explosives",
+    label: "Brandbare of explosieve stoffen",
+    show: ["incidentCategory=chemical"],
+  },
+  {
+    id: "toxic",
+    label: "Giftige stoffen",
+    show: ["incidentCategory=chemical"],
+  },
+  {
+    id: "energy_supply",
+    label: "Energievoorziening",
+    show: ["incidentCategory=infra"],
+  },
+  {
+    id: "water_supply",
+    label: "Drinkwatervoorziening",
+    show: ["incidentCategory=infra"],
+  },
+  {
+    id: "sewage",
+    label: "Riool-/afvalwaterzuivering",
+    show: ["incidentCategory=infra"],
+  },
+  {
+    id: "ict",
+    label: "Telecommunicatie/ICT",
+    show: ["incidentCategory=infra"],
+  },
+  {
+    id: "waste_disposal",
+    label: "Afvalverwerking",
+    show: ["incidentCategory=infra"],
+  },
+  {
+    id: "food_supply",
+    label: "Voedselvoorziening",
+    show: ["incidentCategory=infra"],
+  },
+  {
+    id: "air",
+    label: "Luchtvaartincident",
+    show: ["incidentCategory=transport"],
+  },
+  {
+    id: "water",
+    label: "Incident op of onder water",
+    show: ["incidentCategory=transport"],
+  },
+  {
+    id: "traffic",
+    label: "Verkeersincident op land",
+    show: ["incidentCategory=transport"],
+  },
+  {
+    id: "tunnel",
+    label: "Incident in tunnel",
+    show: ["incidentCategory=transport"],
+  },
+  {
+    id: "health",
+    label: "Bedreiging volksgezondheid",
+    show: ["incidentCategory=health"],
+  },
+  { id: "epidemic", label: "Ziektegolf", show: ["incidentCategory=health"] },
+  {
+    id: "panique",
+    label: "Paniek in menigte",
+    show: ["incidentCategory=social"],
+  },
+  {
+    id: "order",
+    label: "Verstoring openbare orde",
+    show: ["incidentCategory=social"],
+  },
+
+  // TODO Onderstaande verdwijnen later
+
   {
     id: "animalDisease",
     label: "Dierenziekte",
@@ -727,12 +842,6 @@ Gevolgen van de oplossing(srichting) op de effectiviteit van de van toepassing z
   },
 ];
 
-const incidentCategories = [
-  { id: "natural", label: "Natuurlijk incident" },
-  { id: "technical", label: "Technologisch/menselijk falen" },
-  { id: "attack", label: "Opzettelijk incident" },
-];
-
 /** Scale of the incident */
 const scale = [
   { id: "local", label: "Lokaal" },
@@ -741,6 +850,7 @@ const scale = [
   { id: "national", label: "Nationaal" },
   { id: "international", label: "Internationaal" },
 ];
+
 const organisationType = [
   { id: "authority", label: "Autoriteit" },
   { id: "fireBrigade", label: "Brandweer" },
@@ -1034,9 +1144,7 @@ Beschrijving van de (potentiële) impact van het incident op de maatschappij, ui
   { id: "geo", type: "section", label: "Geografische karakteristieken" },
   {
     type: "md",
-    value: `#### Geografische karakteristieken van de gebeurtenis
-
-Geographic dimensies van het verloop van de gebeurtenis.`,
+    value: `#### Geografische karakteristieken van de gebeurtenis`,
   },
   // {
   //   id: 'geo',
@@ -1064,7 +1172,8 @@ Geographic dimensies van het verloop van de gebeurtenis.`,
   },
   {
     id: "memberCountries",
-    label: "Betrokken landen",
+    placeholder: "Selecteer",
+    label: "Betrokken landen behalve Nederland",
     multiple: true,
     type: "select",
     options: countries,
@@ -1088,7 +1197,7 @@ Geographic dimensies van het verloop van de gebeurtenis.`,
   },
   {
     type: "md",
-    value: `##### Markeer de gebeurtenis op de kaart
+    value: `##### Geef de locatie op de kaart aan
 
 _Gebruik de knoppen aan de linkerkant om de kaart te bewerken. Je kunt lijnen, veelhoeken, vierkanten en punten van belang toevoegen. Vergeet niet op de opslagknop te drukken (een na laatste) om je wijzigingen op te slaan._`,
   },
@@ -1186,17 +1295,17 @@ Lijst van organisaties die betrokken waren tijdens de uitvoering van een of meer
       editRepeat: "Bewerk multimedia bron",
     },
   },
-  { id: "editors", type: "section" },
-  { type: "md", value: "#### Editors" },
+  { id: "editors", label: "Auteurs", type: "section" },
+  { type: "md", value: "#### Auteurs" },
   {
     id: "editors",
-    label: "Add editor",
+    label: "Voeg auteur toe",
     className: "col s12",
     repeat: true,
     type: editorForm as any,
     i18n: {
-      createRepeat: "Maak een nieuwe editor aan",
-      editRepeat: "Bewerk editor",
+      createRepeat: "Maak een nieuwe auteur aan",
+      editRepeat: "Bewerk auteur",
     },
   },
   {

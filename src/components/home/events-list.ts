@@ -66,7 +66,7 @@ export const EventsList = () => {
                 (Auth.roles.indexOf(Roles.ADMIN) >= 0 || Auth.canEdit(ev)))
           )
           .filter(query)
-          .filter(typeFilter("memberCountries", vrFilter))
+          .filter(typeFilter("vrs", vrFilter))
           .filter(typeFilter("eventType", eventTypeFilter))
           .filter(typeFilter("cmFunctions", cmFunctionFilter))
           .filter(incidentFilter(incidentTypeFilter))
