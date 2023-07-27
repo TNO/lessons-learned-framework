@@ -36,6 +36,7 @@ export interface IEvent extends ILokiObj {
   // effectsOnPerformance: string;
   // effectsOnResponderHealthAndSafety: string;
   environment: string;
+  legal: string;
   eventType: string;
   geo: string;
   incidentCategory: string;

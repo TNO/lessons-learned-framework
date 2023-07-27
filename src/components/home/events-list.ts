@@ -117,17 +117,7 @@ export const EventsList = () => {
                 className: "col s12",
               }),
               m(Select, {
-                placeholder: "Kies één of meer",
-                label: "Veiligheidsregio",
-                checkedId: vrFilter,
-                options: veiligheidsregios,
-                iconName: "public",
-                multiple: true,
-                onchange: (f) => (state.vrFilter = f),
-                className: "col s12",
-              }),
-              m(Select, {
-                placeholder: "Kies één of meer",
+                placeholder: "Selecteer",
                 label: "Type gebeurtenis",
                 checkedId: eventTypeFilter,
                 options: eventTypes,
@@ -137,7 +127,7 @@ export const EventsList = () => {
                 className: "col s12",
               }),
               m(Select, {
-                placeholder: "Kies één of meer",
+                placeholder: "Selecteer",
                 label: "Type incident",
                 checkedId: incidentTypeFilter,
                 options: incidentTypes,
@@ -147,15 +137,25 @@ export const EventsList = () => {
                 className: "col s12",
               }),
               m(Select, {
-                placeholder: "Kies één of meer",
+                placeholder: "Selecteer",
                 label: "CM proces",
                 checkedId: cmFunctionFilter,
                 options: cmFunctions,
-                iconName: "notifications_active",
+                iconName: "connect_without_contact",
                 multiple: true,
                 onchange: (f) => (state.cmFunctionFilter = f),
                 className: "col s12",
                 dropdownOptions: { container: "body" as any },
+              }),
+              m(Select, {
+                placeholder: "Selecteer",
+                label: "Veiligheidsregio",
+                checkedId: vrFilter,
+                options: veiligheidsregios,
+                iconName: "public",
+                multiple: true,
+                onchange: (f) => (state.vrFilter = f),
+                className: "col s12",
               }),
               m(FlatButton, {
                 label: "Wis alle filters",
@@ -209,9 +209,9 @@ export const EventsList = () => {
                     `${
                       event.lessons
                         ? event.lessons.length === 1
-                          ? "1 lesson"
-                          : `${event.lessons.length} lessons`
-                        : "0 lessons"
+                          ? "1 les"
+                          : `${event.lessons.length} lessen`
+                        : "0 lessen"
                     }`
                   ),
                 ])

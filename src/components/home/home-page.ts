@@ -36,9 +36,15 @@ export const HomePage = () => ({
             style: "position: relative; top: 350px;",
           },
           m(Button, {
-            className: "yellow darken-3 btn-large",
-            label: "Start hier",
+            className: "yellow darken-3 btn-large black-text",
+            label: "Start met zoeken",
             onclick: () => dashboardSvc.switchTo(Dashboards.SEARCH),
+          }),
+          m(Button, {
+            className: "yellow darken-3 btn-large black-text",
+            label: "Deel een nieuwe les",
+            style: "margin-left: 20px",
+            onclick: () => dashboardSvc.switchTo(Dashboards.SEARCH), // TODO
           })
         )
       ),

@@ -29,6 +29,7 @@ export const veiligheidsregios: { id: string; label: string }[] = [
   { id: "vr23", label: "23 Limburg-Noord" },
   { id: "vr24", label: "24 Zuid-Limburg" },
   { id: "vr25", label: "25 Flevoland" },
+  { id: "vr26", label: "26 Landelijk" },
 ];
 
 export const countries = [
@@ -603,7 +604,7 @@ const improvementLevels = [
 const publicationForm = [
   {
     id: "title",
-    label: "Nederlandse title",
+    label: "Nederlandse titel",
     type: "text",
     required: true,
     icon: "title",
@@ -678,15 +679,15 @@ const publicationForm = [
 ] as UIForm<IPublication>;
 
 export const eventTypes = [
-  { id: "crisis", label: "Incident, crisis of ramp" },
+  { id: "crisis", label: "Incident, ramp of crisis" },
+  { id: "prevention", label: "Voorbereiding" },
+  { id: "training", label: "Oefening" },
   { id: "event", label: "Evenement" },
-  { id: "prevention", label: "Preventieve activiteit" },
-  { id: "test", label: "Test of trial" },
-  { id: "training", label: "Training of oefening" },
+  // { id: "test", label: "Test" },
 ];
 
 export const gripLevels = [
-  { id: "grip-0", label: "GRIP-0/n.v.t." },
+  { id: "grip-0", label: "Geen" },
   { id: "grip-1", label: "GRIP-1" },
   { id: "grip-2", label: "GRIP-2" },
   { id: "grip-3", label: "GRIP-3" },
@@ -735,15 +736,15 @@ const solutionTypes = [
   { id: "other", label: "Anders" },
 ];
 const lessonForm: UIForm<ILesson> = [
-  { id: "name", type: "text", label: "Title", icon: "title", required: true },
+  { id: "name", type: "text", label: "Titel", icon: "title", required: true },
   {
     type: "md",
-    value: "##### Observatie",
+    value: "##### Observatie / Analyse",
   },
   {
     id: "cmFunction",
     type: "select",
-    label: "Crisis Management functie",
+    label: "Crisismanagementproces",
     className: "col s12",
     multiple: true,
     options: preSelectedCmFunctions,
@@ -751,7 +752,7 @@ const lessonForm: UIForm<ILesson> = [
   {
     id: "effectiveness",
     type: "select",
-    label: "Waargenomen effectiviteit gedurende de gebeurtenis",
+    label: "Waargenomen effectiviteit",
     className: "col s6",
     options: qualityLevels,
   },
@@ -759,13 +760,13 @@ const lessonForm: UIForm<ILesson> = [
     id: "observationInfo",
     label: "Uitleg van de waarneming",
     description:
-      "_Beschrijf de waarneming, positieve of negatieve ervaringen, etc. m.b.t. de CM-functie._",
+      "_Beschrijf de waarneming, positieve of negatieve ervaringen, etc. m.b.t. het CM proces._",
     type: "textarea",
   },
 
   {
     type: "md",
-    value: `##### Verbeterpunten
+    value: `##### Conclusie
 Oplossing of oplossingsrichting voor (verdere) verbetering van de effectiviteit van het CM proces.`,
   },
   {
@@ -778,39 +779,38 @@ Oplossing of oplossingsrichting voor (verdere) verbetering van de effectiviteit 
   },
   {
     id: "lesson",
-    label: "Beschrijving van de oplossing",
+    label: "Toelichting",
     type: "textarea",
   },
 
   {
     type: "md",
-    value: `##### Verwachtingen
-Gevolgen van de oplossing(srichting) op de effectiviteit van de van toepassing zijnde CM-functies wanneer deze oplossing geïmplementeerd wordt en toegepast bij alle betrokken CM organisaties:`,
+    value: `##### Opmerkingen`,
+    // Gevolgen van de oplossing(srichting) op de effectiviteit van de van toepassing zijnde CM processen wanneer deze oplossing geïmplementeerd wordt en toegepast bij alle betrokken CM organisaties:`,
   },
-  {
-    id: "effectsOnPerformance",
-    label: "Verwachtte effectiviteitsverbetering van de CM-functie",
-    type: "select",
-    className: "col s12",
-    options: improvementLevels,
-  },
+  // {
+  //   id: "effectsOnPerformance",
+  //   label: "Verwachtte effectiviteitsverbetering van het CM proces",
+  //   type: "select",
+  //   className: "col s12",
+  //   options: improvementLevels,
+  // },
   {
     id: "expectedImprovementsInfo",
-    label:
-      "Toelichting waarom een verbetering van de CM-functie verwacht wordt",
+    label: "Toelichting",
     type: "textarea",
   },
-  {
-    type: "md",
-    value:
-      "Reductie van het aantal slachtoffers en/of schade in geval van een incident, crisis of ramp bij het toepassen van de oplossing in vergelijking tot de huidige praktijk:",
-  },
-  {
-    id: "victimsImprovements",
-    label: "Verwachte impactreductie",
-    className: "col s6 l4",
-    options: improvementLevels,
-  },
+  // {
+  //   type: "md",
+  //   value:
+  //     "Reductie van het aantal slachtoffers en/of schade in geval van een incident, crisis of ramp bij het toepassen van de oplossing in vergelijking tot de huidige praktijk:",
+  // },
+  // {
+  //   id: "victimsImprovements",
+  //   label: "Verwachte impactreductie",
+  //   className: "col s6 l4",
+  //   options: improvementLevels,
+  // },
   // {
   //   id: 'materialDamageImprovements',
   //   label: 'Material damage reduction',
@@ -835,11 +835,11 @@ Gevolgen van de oplossing(srichting) op de effectiviteit van de van toepassing z
   //   className: 'col s6 l4',
   //   options: improvementLevels,
   // },
-  {
-    id: "explanationImprovements",
-    label: "Toelichting op de verwachtte impactreductie",
-    type: "textarea",
-  },
+  // {
+  //   id: "explanationImprovements",
+  //   label: "Toelichting op de verwachtte impactreductie",
+  //   type: "textarea",
+  // },
 ];
 
 /** Scale of the incident */
@@ -892,7 +892,7 @@ const organisationForm: UIForm<IOrganisation> = [
   // },
   {
     id: "info",
-    label: "Rol gedurende de gebeurtenis",
+    label: "Betrokkenheid bij de gebeurtenis (taak of rol)",
     type: "textarea",
   },
 ];
@@ -980,8 +980,7 @@ Naam en algemene kenmerken om de gebeurtenis te beschrijven.`,
   {
     id: "date",
     type: "date",
-    label: "Start datum",
-    required: true,
+    label: "Datum",
     className: "col s12 m4",
   },
   {
@@ -989,16 +988,15 @@ Naam en algemene kenmerken om de gebeurtenis te beschrijven.`,
     type: "number",
     label: "Duur (in dagen)",
     value: 1 as any,
-    required: true,
     className: "col s12 m4",
   },
   {
     id: "level",
     type: "select",
-    label: "GRIP niveau",
+    label: "Opschalingsniveau",
     required: true,
     className: "col s12 m4",
-    options: eventTypes,
+    options: gripLevels,
   },
   {
     id: "locationText",
@@ -1017,11 +1015,11 @@ Naam en algemene kenmerken om de gebeurtenis te beschrijven.`,
   {
     id: "characteristics",
     type: "section",
-    label: "Incident karakteristieken",
+    label: "Karakteristieken",
   },
   {
     type: "md",
-    value: `#### Incident karakteristieken
+    value: `#### Karakteristieken
 Beschrijving van het verloop van de gebeurtenis: met welk incident begon het, welke andere incidenten vloeiden hier uit voort, en wat was hun impact op de maatschappij.`,
   },
   {
@@ -1042,8 +1040,7 @@ Beschrijving van het verloop van de gebeurtenis: met welk incident begon het, we
   },
   {
     id: "otherIncidents",
-    label: "Vervolgincidenten",
-    description: "_Neveneffecten of ketenincidenten_",
+    label: "Neveneffecten",
     className: "col s12",
     multiple: true,
     options: incidentTypes
@@ -1052,12 +1049,12 @@ Beschrijving van het verloop van de gebeurtenis: met welk incident begon het, we
   },
   {
     id: "incidentInfo",
-    label: "Toelichting van het incident",
+    label: "Toelichting",
     type: "textarea",
   },
   {
     id: "scale",
-    label: "Schaal van het incident en de impact",
+    label: "Schaal",
     type: "select",
     required: true,
     className: "col s6",
@@ -1139,6 +1136,11 @@ Beschrijving van de (potentiële) impact van het incident op de maatschappij, ui
     label: "Milieuschade",
     type: "textarea",
   },
+  {
+    id: "legal",
+    label: "Rechtsorde",
+    type: "textarea",
+  },
 
   // SCALE
   { id: "geo", type: "section", label: "Geografische karakteristieken" },
@@ -1207,9 +1209,9 @@ _Gebruik de knoppen aan de linkerkant om de kaart te bewerken. Je kunt lijnen, v
   { id: "organisations", type: "section", label: "Betrokken organisaties" },
   {
     type: "md",
-    value: `#### Organisaties betrokken bij de uitvoering van de CM functie(s)
+    value: `#### Organisaties betrokken bij de uitvoering van de CM processen
 
-Lijst van organisaties die betrokken waren tijdens de uitvoering van een of meerdere crisismanagement functies.`,
+Lijst van organisaties die betrokken waren tijdens de uitvoering van een of meerdere crisismanagementprocessen.`,
   },
   {
     id: "organisations",
@@ -1236,7 +1238,7 @@ Lijst van organisaties die betrokken waren tijdens de uitvoering van een of meer
     multiple: true,
     required: true,
     label:
-      "CM functie(s) van specifiek belang om deze gebeurtenis adequaat af te handelen",
+      "CM processen van specifiek belang om deze gebeurtenis adequaat af te handelen",
     className: "col s12",
     checkboxClass: "col s12 m6",
     options: cmFunctions,
