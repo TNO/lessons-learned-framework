@@ -130,13 +130,13 @@ export const EventForm = () => {
                     m(
                       ".col.s12",
                       m(Chips, {
-                        label: "Eigenaar(en)",
+                        label: "Eigenaar(s)",
                         placeholder: "+gebruikersnaam",
                         onchange: async (chips) => {
                           event.owner = chips.map(({ tag }) => tag);
                           if (event.owner.length === 0) {
                             M.toast({
-                              html: "Eigenaar(en) kan niet leeg zijn!",
+                              html: "Eigenaar(s) kan niet leeg zijn!",
                               classes: "red",
                             });
                             event.owner.push(Auth.username);

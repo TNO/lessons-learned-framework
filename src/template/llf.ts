@@ -696,36 +696,18 @@ export const gripLevels = [
 ];
 
 export const cmFunctions = [
-  { id: "risk_assessment", label: "Risico inschatting" },
-  { id: "planning", label: "Planning/Doctrine" },
-  { id: "education_training", label: "Onderwijs & Training" },
-  { id: "risk_communication", label: "Crisis/Risico communicatie" },
-  { id: "detection_surveillance", label: "Detectie/Surveillance" },
-  { id: "alerting", label: "Alarmering, incl. 112" },
-  { id: "scale", label: "Opschalen/Afschalen" },
-  { id: "fight_incident_sources", label: "Elimineer incident bron" },
-  { id: "rescue_operations", label: "Reddingsoperations/SAR" },
-  { id: "law_enforcement", label: "Openbare orde en Veiligheid" },
-  { id: "evacuation_shelter", label: "Evacuatie & Opvang" },
-  { id: "medical_treatment", label: "Eerste Hulp" },
-  { id: "c3", label: "C3/Informatiemanagement" },
-  { id: "sa", label: "Situation Assessment" },
-  { id: "logistics", label: "Logistiek/Resource mgt." },
-  { id: "volunteer_management", label: "Vrijwilligers management" },
-  { id: "social_media_mining", label: "Social media mining" },
-  { id: "debris", label: "Verwijderen afval" },
-  { id: "restore", label: "Herstellen kritieke diensten" },
-  { id: "crowd_mgmt", label: "Crowd management" },
-  { id: "traffic_mgmt", label: "Verkeersmanagement" },
-  { id: "decontamination", label: "Decontaminatie" },
-  { id: "collaboration", label: "Internationale samenwerking" },
-  { id: "needs", label: "Voorzien in basisbehoeften" },
-].sort(sortByLabel);
+  { id: "leadership", label: "Leiding en coördinatie" },
+  { id: "info_mgmt", label: "Informatiemanagement" },
+  { id: "comm", label: "Crisiscommunicatie" },
+  { id: "alerts", label: "Melding en alarmering" },
+  { id: "level", label: "Op- en afschaling" },
+  { id: "after", label: "Nafase" },
+];
 
-const preSelectedCmFunctions = cmFunctions.map((f) => ({
-  ...f,
-  show: [`cmFunctions = ${f.id}`],
-}));
+// const preSelectedCmFunctions = cmFunctions.map((f) => ({
+//   ...f,
+//   show: [`cmFunctions = ${f.id}`],
+// }));
 
 const solutionTypes = [
   { id: "doctrine", label: "Doctrine/procedure" },
@@ -736,7 +718,13 @@ const solutionTypes = [
   { id: "other", label: "Anders" },
 ];
 const lessonForm: UIForm<ILesson> = [
-  { id: "name", type: "text", label: "Titel", icon: "title", required: true },
+  {
+    id: "name",
+    type: "text",
+    label: "Korte naam",
+    icon: "title",
+    required: true,
+  },
   {
     type: "md",
     value: "##### Observatie / Analyse",
@@ -744,16 +732,17 @@ const lessonForm: UIForm<ILesson> = [
   {
     id: "cmFunction",
     type: "select",
-    label: "Crisismanagementproces",
-    className: "col s12",
+    label: "Crisismanagementproces(sen)",
+    className: "col s12 m9",
     multiple: true,
-    options: preSelectedCmFunctions,
+    options: cmFunctions,
+    // preSelectedCmFunctions,
   },
   {
     id: "effectiveness",
     type: "select",
     label: "Waargenomen effectiviteit",
-    className: "col s6",
+    className: "col s12 m3",
     options: qualityLevels,
   },
   {
@@ -852,36 +841,51 @@ const scale = [
 ];
 
 const organisationType = [
-  { id: "authority", label: "Autoriteit" },
-  { id: "fireBrigade", label: "Brandweer" },
-  { id: "civil_protection", label: "Civiele Bescherming" },
-  { id: "police", label: "Politie" },
-  { id: "medical_services", label: "Medische diensten" },
-  { id: "public_services", label: "Andere openbare diensten" },
-  { id: "defence", label: "Defencie" },
-  { id: "command_centres", label: "Command en/of Control centra" },
-  { id: "monitoring_institute", label: "Toezichtshouder" },
-  { id: "cip", label: "Kritieke Infrastructuur aanbieder" },
-  { id: "ngo_volunteer.", label: "NGO/Vrijwilligersorganisatie" },
-  { id: "training", label: "Training instituut" },
-  { id: "other", label: "Anders" },
-  { id: "research_organisation", label: "Onderzoeksorganisatie" },
-  { id: "industry_sme", label: "Industrie/MKB" },
-].sort(sortByLabel);
+  // Type kolom: Algemeen
+  { id: "vr", label: "Veiligheidsregio", show: ["column = gen"] },
+  { id: "Gemeente", label: "Gemeente", show: ["column = gen"] },
+  { id: "brw", label: "Brandweer", show: ["column = gen"] },
+  { id: "pol", label: "Politie", show: ["column = gen"] },
+  { id: "ghor", label: "Geneeskundige dienst", show: ["column = gen"] },
+  { id: "def", label: "Defensie", show: ["column = gen"] },
+  { id: "om", label: "Openbaar Ministerie", show: ["column = gen"] },
+  { id: "od", label: "Omgevingsdienst", show: ["column = gen"] },
+  // Type kolom: Functioneel
+  { id: "ws", label: "Waterschap", show: ["column = fun"] },
+  { id: "rws", label: "RWS", show: ["column = fun"] },
+  { id: "pr", label: "ProRail", show: ["column = fun"] },
+  { id: "energy", label: "Energieleverancier", show: ["column = fun"] },
+  { id: "net_energy", label: "Netbeheerder energie", show: ["column = fun"] },
+  { id: "net_telecom", label: "Netbeheerder telecom", show: ["column = fun"] },
+  { id: "water", label: "Drinkwaterbedrijf", show: ["column = fun"] },
+  { id: "transport", label: "Vervoersmaatschappij", show: ["column = fun"] },
+  { id: "other", label: "Anders", show: ["column = fun"] },
+];
+//.sort(sortByLabel);
 
 const organisationForm: UIForm<IOrganisation> = [
   {
-    id: "name",
-    label: "Organisatienaam",
-    type: "text",
-    className: "col s12 m6",
+    id: "column",
+    label: "Type kolom",
+    type: "select",
+    className: "col s12 m3",
+    options: [
+      { id: "gen", label: "Algemeen " },
+      { id: "fun", label: "Functioneel " },
+    ],
   },
   {
     id: "type",
     label: "Type organisatie",
     type: "select",
-    className: "col s12 m6",
+    className: "col s12 m4",
     options: organisationType,
+  },
+  {
+    id: "name",
+    label: "Organisatienaam",
+    type: "text",
+    className: "col s12 m5",
   },
   // {
   //   id: "country",
@@ -1227,27 +1231,27 @@ Lijst van organisaties die betrokken waren tijdens de uitvoering van een of meer
   },
 
   // Impact & Challenges
-  { id: "impact", type: "section", label: "Kritieke CM-processen" },
-  {
-    type: "md",
-    value: "#### Kritieke crisismanagementprocessen",
-  },
-  {
-    id: "cmFunctions",
-    type: "options",
-    multiple: true,
-    required: true,
-    label:
-      "CM processen van specifiek belang om deze gebeurtenis adequaat af te handelen",
-    className: "col s12",
-    checkboxClass: "col s12 m6",
-    options: cmFunctions,
-  },
-  {
-    id: "challengesInfo",
-    label: "Toelichting op de uitdaging(en)",
-    type: "textarea",
-  },
+  // { id: "impact", type: "section", label: "Kritieke CM-processen" },
+  // {
+  //   type: "md",
+  //   value: "#### Kritieke crisismanagementprocessen",
+  // },
+  // {
+  //   id: "cmFunctions",
+  //   type: "options",
+  //   multiple: true,
+  //   required: true,
+  //   label:
+  //     "CM processen van specifiek belang om deze gebeurtenis adequaat af te handelen",
+  //   className: "col s12",
+  //   checkboxClass: "col s12 m6",
+  //   options: cmFunctions,
+  // },
+  // {
+  //   id: "challengesInfo",
+  //   label: "Toelichting op de uitdaging(en)",
+  //   type: "textarea",
+  // },
 
   // LESSONS
   { id: "lessons", type: "section", label: "Lessen" },
