@@ -1,4 +1,4 @@
-import "material-icons/iconfont/material-icons.css";
+import 'material-icons/iconfont/filled.css';
 import "materialize-css/dist/css/materialize.min.css";
 import m from "mithril";
 import "./css/style.css";
