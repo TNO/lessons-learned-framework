@@ -1,6 +1,8 @@
 import m from "mithril";
 import { SlimdownView } from "mithril-ui-form";
 import driverLogo from "../../assets/driver-logo2.png";
+import { incidentTypes } from "../../template/llf";
+import { IncidentIcon } from "../ui/incident-icon";
 
 const md = `<h4 class="primary-text">Over L3</h4>
 
@@ -68,5 +70,21 @@ export const AboutPage = () => ({
           style: "display: block; margin: 0 auto;",
         })
       ),
+      m("#legend.row", [
+        m(".col.s12", m("h4", "Legenda")),
+        m(
+          ".col.s12",
+          incidentTypes.map((it) =>
+            m(".col.s6.m4", [
+              m(IncidentIcon, {
+                className: "left m10",
+                incident: it.id,
+                label: it.label,
+              }),
+              m("span.left", it.label),
+            ])
+          )
+        ),
+      ]),
     ]),
 });
