@@ -10,6 +10,12 @@ module.exports = {
     main: "./src/app.ts",
   },
   devServer: {
+    headers: [
+      {
+        key: "Content-Security-Policy",
+        value: "frame-ancestors 'self' http://localhost:8765;",
+      },
+    ],
     port: 1234,
   },
   builtins: {
@@ -26,6 +32,14 @@ module.exports = {
         favicon: "./src/favicon.ico",
         meta: {
           viewport: "width=device-width, initial-scale=1",
+          csp: {
+            "http-equiv": "Content-Security-Policy",
+            content:
+              "default-src 'self'; img-src https://*; child-src 'none'; frame-ancestors '*'",
+          },
+          // "http-equiv": "Content-Security-Policy",
+          // content:
+          //   "default-src 'self'; img-src https://*; child-src 'none'; frame-ancestors '*'",
           "og:title": "Lessons-Learned Library",
           "og:description":
             "Welke ervaringen heb je opgedaan tijdens het afhandelen van een incident of crisis, en welke lessen wil je delen met je collega's.",
