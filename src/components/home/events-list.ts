@@ -17,6 +17,7 @@ import {
   nameAndDescriptionFilter,
   typeFilter,
 } from "../../utils";
+import { IncidentIcon } from "../ui/incident-icon";
 
 export const EventsList = () => {
   const state = {
@@ -71,11 +72,11 @@ export const EventsList = () => {
           .filter(typeFilter("cmFunctions", cmFunctionFilter))
           .filter(incidentFilter(incidentTypeFilter))
           .slice(page * pageSize, (page + 1) * pageSize) || [];
-      return m(".row", { style: "margin-top: 1em;" }, [
+      return m("div", { style: "margin-top: 1em;" }, [
         m(
-          ".col.s12.l3",
+          ".row",
           m(
-            "ul#slide-out.sidenav.sidenav-fixed",
+            "div#slide-out.sidenav.sidenav-fixed",
             {
               style: "height: 95vh",
               oncreate: ({ dom }) => {
@@ -174,7 +175,7 @@ export const EventsList = () => {
           )
         ),
         m(
-          ".col.s12.l9",
+          "#event-list.row",
           filteredEvents.map((event) =>
             m(".col.s12.m6.xl4", [
               m(
@@ -193,6 +194,7 @@ export const EventsList = () => {
                   m("p.light.block-with-text", event.desc),
                 ]),
                 m(".card-action", [
+                  m(IncidentIcon, { incident: event.initialIncident }),
                   m(
                     "a",
                     {
@@ -200,7 +202,7 @@ export const EventsList = () => {
                       href: `${AppState.apiService}/api/events/${event.$loki}`,
                     },
                     m(Icon, {
-                      className: "white-text",
+                      className: "black-text",
                       iconName: "cloud_download",
                     })
                   ),
