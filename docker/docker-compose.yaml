@@ -18,12 +18,13 @@
 version: "3"
 services:
   keycloak:
-    image: quay.io/keycloak/keycloak:22.0.1
+    image: bitnami/keycloak:latest
     container_name: kc
-    command: start-dev
+    # command: start-dev
     environment:
-      - DB_VENDOR=h2
-      - KEYCLOAK_ADMIN=admin
+      # - DB_VENDOR=h2
+      - KEYCLOAK_DATABASE_VENDOR=dev-file
+      - KEYCLOAK_ADMIN_USER=admin
       - KEYCLOAK_ADMIN_PASSWORD=${ADMIN_PWD}
     expose:
       - 8080
@@ -33,9 +34,10 @@ services:
     ports:
       - "8765:8080"
     volumes:
-      - ./l3-realm.json:/opt/jboss/keycloak/l3-realm.json
+      - ./realms:/opt/jboss/keycloak/
   l3:
     image: l3crisis
+    profiles: ["full"]
     container_name: l3
     ports:
       - 8888:3000
