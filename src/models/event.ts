@@ -1,3 +1,4 @@
+import { IncidentType } from "../template/llf";
 import { ILesson } from "./lesson";
 import { IOrganisation } from "./organisation";
 
@@ -42,7 +43,7 @@ export interface IEvent extends ILokiObj {
   incidentCategory: string;
   incidentInfo: string;
   incidentTypes: string[];
-  initialIncident: string;
+  initialIncident: IncidentType;
   international: string;
   lessons?: ILesson[];
   location: { [key: string]: any };

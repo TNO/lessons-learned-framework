@@ -17,4 +17,5 @@ export interface ILesson {
   // environmentalDegradationImprovements: string;
   explanationImprovements: string;
   observationInfo: string;
+  judgement: string;
 }
