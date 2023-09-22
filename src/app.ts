@@ -1,4 +1,4 @@
-import "material-icons/iconfont/material-icons.css";
+import "material-icons/iconfont/filled.css";
 import "materialize-css/dist/css/materialize.min.css";
 import m from "mithril";
 import "./css/style.css";
@@ -16,6 +16,8 @@ registerPlugin("map", leafletPlugin); // import L from "leaflet";
 //   iconUrl: require("leaflet/dist/images/marker-icon.png"),
 //   shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
 // });
+
+document.documentElement.setAttribute("lang", "nl-NL");
 
 const restoreSession = async () => {
   await Auth.refreshLogin();
