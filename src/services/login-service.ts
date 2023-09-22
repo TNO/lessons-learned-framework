@@ -16,7 +16,7 @@ const refreshTokenKey = "refresh-token";
 
 const authErrorHandler = (error: KeycloakError) => {
   console.log("Failed login via Keycloak");
-  alert("Failed to initialize: " + error);
+  alert("Failed to initialize: " + JSON.stringify(error));
 };
 
 const authSuccessHandler = (authenticated: boolean) => {
@@ -29,22 +29,28 @@ const authSuccessHandler = (authenticated: boolean) => {
 
 export const Auth = {
   keycloak: {} as Keycloak,
-  isAuthenticated: true,
-  name: "Dirk Stolk",
-  username: "dirk.stolk@tno.nl",
-  email: "dirk.stolk@tno.nl",
+  // isAuthenticated: true,
+  // name: "Dirk Stolk",
+  // username: "dirk.stolk@tno.nl",
+  // email: "dirk.stolk@tno.nl",
+  isAuthenticated: false,
+  name: "",
+  username: "",
+  email: "",
   token: window.localStorage.getItem(tokenKey) || "",
   refreshToken: window.localStorage.getItem(refreshTokenKey) || "",
-  roles: [Roles.ADMIN] as string[],
+  roles: [] as string[],
+  // roles: [Roles.ADMIN] as string[],
 
   async init() {
     if (Auth.keycloak.hasOwnProperty("login")) {
       return;
     }
+    console.log("INIT");
     const env = await envSvc.getEnv();
     Auth.keycloak = new Keycloak({
       realm: env.LOKI_REALM,
-      url: `${env.LOKI_KEYCLOAK}/auth`,
+      url: `${env.LOKI_KEYCLOAK}`,
       clientId: env.LOKI_CLIENTID,
     });
   },
