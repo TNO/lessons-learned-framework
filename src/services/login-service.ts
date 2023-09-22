@@ -30,9 +30,9 @@ const authSuccessHandler = (authenticated: boolean) => {
 export const Auth = {
   keycloak: {} as Keycloak,
   // isAuthenticated: true,
-  // name: "Dirk Stolk",
-  // username: "dirk.stolk@tno.nl",
-  // email: "dirk.stolk@tno.nl",
+  // name: "EV",
+  // username: "ev@tno.nl",
+  // email: "ev@tno.nl",
   isAuthenticated: false,
   name: "",
   username: "",
