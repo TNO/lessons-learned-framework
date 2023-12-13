@@ -1,0 +1,10 @@
+<svg class="inline-block" id="plagen-en-dierziekten-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 430">
+    <defs>
+        <style>
+            .plagen-en-dierziekten-cls-2{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:10px}
+        </style>
+    </defs>
+    <circle cx="215" cy="215" r="210" style="fill:#007a4d"/>
+    <path class="plagen-en-dierziekten-cls-2" d="M236.18 152.58c12.5-17.94 35.16-42.65 69.85-51.38M266.67 210.21l15.12-4.06 14.32 28.63 14.31 4.77M266.48 242.08l24.85 16.55-19.08 42.94 19.08 19.08M123.97 101.19c34.68 8.73 57.35 33.44 69.85 51.38M119.58 239.55l14.31-4.77 14.32-28.63 15.12 4.06M138.67 320.65l19.08-19.08-19.08-42.94 24.85-16.55"/>
+    <path class="plagen-en-dierziekten-cls-2" d="M267.48 225.24c0 47.42-23.47 85.88-52.48 85.88s-52.48-38.45-52.48-85.88c0-8.3.72-16.27 2.05-23.85h100.86c1.34 7.59 2.05 15.55 2.05 23.85ZM255.46 182.3h-80.91c8.44-22.9 23.42-38.17 40.46-38.17s32.01 15.27 40.46 38.17Z"/>
+</svg>

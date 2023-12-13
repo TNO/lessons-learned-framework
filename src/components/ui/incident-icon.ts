@@ -1,42 +1,42 @@
 import m, { FactoryComponent } from "mithril";
-import ziekte from "../../assets/ocha/livestock.svg";
-import epidemie from "../../assets/ocha/epidemic.svg";
-import spoor from "../../assets/ocha/train.svg";
+import ziekte from "../../assets/icons/crisis_types/plagen-en-dierziekten.svg";
+import epidemie from "../../assets/icons/crisis_types/verstoring-ziektegolf.svg";
+import spoor from "../../assets/icons/crisis_types/spoorvervoerincidenten.svg";
 import winter from "../../assets/ocha/snowfall.svg";
 import buien from "../../assets/ocha/heavy-rain.svg";
 import hittegolf from "../../assets/ocha/heatwave.svg";
 import koudegolf from "../../assets/ocha/cold-wave.svg";
 import storm from "../../assets/ocha/storm.svg";
-import aardbeving from "../../assets/ocha/earthquake.svg";
-import natuurbrand from "../../assets/icons/noun-forest-fire-4211620.svg";
+import aardbeving from "../../assets/icons/crisis_types/aardbeving.svg";
+import natuurbrand from "../../assets/icons/crisis_types/natuurbrand.svg";
 import kust from "../../assets/ocha/flood.svg";
 // import rivier from "../../assets/ocha/";
 import vloedgolf from "../../assets/ocha/flash-flood.svg";
-import drinkwater from "../../assets/ocha/potable-water.svg";
-import elektriciteit from "../../assets/ocha/power-electricity-affected.svg";
-import gas from "../../assets/ocha/stove.svg";
-import riool from "../../assets/ocha/water-sanitation-and-hygiene.svg";
-import voedsel from "../../assets/ocha/food-security.svg";
-import cyberaanval from "../../assets/icons/noun-cyber-attack-5161319.svg";
-import ict from "../../assets/ocha/information-technology.svg";
+import drinkwater from "../../assets/icons/crisis_types/verstoring-drinkwatervoorziening.svg";
+import elektriciteit from "../../assets/icons/crisis_types/verstoring-elektriciteitsvoorziening.svg";
+import gas from "../../assets/icons/crisis_types/verstoring-gasvoorziening.svg";
+import riool from "../../assets/icons/crisis_types/verstoring-riool-en-afvalwaterzuivering.svg";
+import voedsel from "../../assets/icons/crisis_types/verstoring-voedselvoorziening.svg";
+import cybercrime from "../../assets/icons/crisis_types/cybercrime.svg";
+import ict from "../../assets/icons/crisis_types/verstoring-telecommunicatie-en-ict.svg";
 import water from "../../assets/ocha/drowned.svg";
 import tunnel from "../../assets/ocha/tunnel.svg";
-import luchtvaart from "../../assets/ocha/airport-affected.svg";
-import scheepvaart from "../../assets/ocha/port-affected.svg";
-import wegverkeer from "../../assets/ocha/road-affected.svg";
-import explosief from "../../assets/ocha/attack.svg";
+import luchtvaart from "../../assets/icons/crisis_types/luchtvaartincidenten.svg";
+import scheepvaart from "../../assets/icons/crisis_types/scheepvaartincidenten.svg";
+import wegverkeer from "../../assets/icons/crisis_types/wegvervoerincidenten.svg";
+import explosief from "../../assets/icons/crisis_types/incident-met-gevaarlijke-stoffen.svg";
 import giftig from "../../assets/ocha/detergent.svg";
 import bomaanslag from "../../assets/ocha/mine.svg";
 import brandstichting from "../../assets/icons/noun-lighter-2109464.svg";
 import technologicalDisaster from "../../assets/ocha/technological-disaster.svg";
 import sabotage from "../../assets/icons/noun-destroy-4380930.svg";
 import instorting from "../../assets/ocha/building-facility-affected.svg";
-import brand from "../../assets/ocha/house-burned.svg";
+import brand from "../../assets/icons/crisis_types/gebouwbranden-en-instorting.svg";
 import paniek from "../../assets/ocha/group.svg";
 import vandalisme from "../../assets/icons/noun-graffiti-3194142.svg";
-import voo from "../../assets/ocha/advocacy.svg";
+import voo from "../../assets/icons/crisis_types/verstoring-openbare-orde.svg";
 import onrust from "../../assets/ocha/affected-population.svg";
-import dumpen from "../../assets/ocha/debris-management.svg";
+import afval from "../../assets/icons/crisis_types/verstoring-afvalverwerking.svg";
 import help from "../../assets/ocha/help.svg";
 import { IncidentType } from "../../template/llf";
 
@@ -80,8 +80,8 @@ export const IncidentIcon: FactoryComponent<{
         return riool;
       case "voedsel":
         return voedsel;
-      case "cyberaanval":
-        return cyberaanval;
+      case "cybercrime":
+        return cybercrime;
       case "ict":
         return ict;
       case "waterincident":
@@ -122,8 +122,8 @@ export const IncidentIcon: FactoryComponent<{
         return voo;
       case "onrust":
         return onrust;
-      case "dumpen":
-        return dumpen;
+      case "afval":
+        return afval;
       default:
         return help;
     }

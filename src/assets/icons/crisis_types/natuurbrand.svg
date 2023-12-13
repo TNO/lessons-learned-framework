@@ -1,0 +1,23 @@
+<svg class="inline-block" id="natuurbrand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 430">
+  <defs>
+    <style>
+      .natuurbrand-cls-1 {
+        fill: #007a4d;
+      }
+
+      .natuurbrand-cls-2 {
+        fill: none;
+        stroke: #fff;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 10px;
+      }
+    </style>
+  </defs>
+  <circle class="natuurbrand-cls-1" cx="215" cy="215" r="210"></circle>
+  <g>
+    <rect class="natuurbrand-cls-2" x="181.92" y="307.33" width="24.62" height="49.24"></rect>
+    <path class="natuurbrand-cls-2" d="m217.19,307.33h-102.98l26.41-61.56h-20.25l36.93-73.87h-18.47l55.4-98.49,55.4,98.49h-18.47l24.5,49c-33.55,35.33-41.24,64.39-38.47,86.42Z"></path>
+    <path class="natuurbrand-cls-2" d="m334.55,290.04c-5.2-28.45-24.78-52.39-24.78-52.39l-13.97,20.99c-13.97-13.97-20.99-55.95-20.99-55.95-7.14,6.28-13.48,12.31-19.14,18.22-33.55,35.33-41.24,64.39-38.47,86.42.19,1.6.44,3.17.74,4.7,5.11,26.27,29.24,44.55,56,44.55h3.85c35.36,0,63.12-31.76,56.77-66.54Z"></path>
+  </g>
+</svg>

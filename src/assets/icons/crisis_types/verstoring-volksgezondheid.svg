@@ -1,0 +1,10 @@
+<svg class="inline-block" id="verstoring-volksgezondheid-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 430">
+    <defs>
+        <style>
+            .verstoring-volksgezondheid-cls-2{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:10px}
+        </style>
+    </defs>
+    <circle cx="215" cy="215" r="210" style="fill:#a90061"/>
+    <path class="verstoring-volksgezondheid-cls-2" d="M349.04 163.81v102.38h-79.62v79.62H167.04v-79.62H87.42V163.81h79.62V84.19h102.38v79.62h79.62z"/>
+    <path class="verstoring-volksgezondheid-cls-2" d="M262.47 188.31h0c11.11 11.11 11.11 29.11 0 40.22l-44.24 44.24-44.24-44.24c-11.11-11.11-11.11-29.11 0-40.22h0c11.11-11.11 29.11-11.11 40.22 0l4.02 4.02 4.02-4.02c11.11-11.11 29.11-11.11 40.22 0Z"/>
+</svg>

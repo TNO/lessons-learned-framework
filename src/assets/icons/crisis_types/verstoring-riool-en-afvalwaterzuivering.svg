@@ -1,0 +1,10 @@
+<svg class="inline-block" id="verstoring-riool-en-afvalwaterzuivering-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 430">
+    <defs>
+        <style>
+            .verstoring-riool-en-afvalwaterzuivering-cls-2{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:10px}
+        </style>
+    </defs>
+    <circle cx="215" cy="215" r="210" style="fill:#ae7d5b"/>
+    <path class="verstoring-riool-en-afvalwaterzuivering-cls-2" d="M111.81 117.93h87.53v77.8h-87.53M199.34 103.34h29.18v106.99h-29.18zM335.5 269.85c-4.81 0-8.36.88-11.33 2.19-8.56 3.84-12.11 11.23-25.97 11.23-13.13 0-17.02-6.61-24.66-10.55-3.21-1.7-7.1-2.87-12.64-2.87-18.63 0-18.63 13.42-37.3 13.42s-18.63-13.42-37.25-13.42-18.63 13.42-37.3 13.42-18.63-13.42-37.25-13.42M111.81 313.61c18.63 0 18.63 13.42 37.26 13.42s18.64-13.42 37.27-13.42 18.64 13.42 37.29 13.42 18.64-13.42 37.27-13.42 18.65 13.42 37.3 13.42 18.65-13.42 37.3-13.42"/>
+    <path class="verstoring-riool-en-afvalwaterzuivering-cls-2" d="M324.17 272.03c-8.56 3.84-12.11 11.23-25.97 11.23-13.13 0-17.02-6.61-24.66-10.55l-2.97-20.81a94.433 94.433 0 0 0-42.06-65.89v-38.9a139.872 139.872 0 0 1 65.8 46.3c16.58 21.06 27.18 46.93 29.52 74.84l.34 3.79Z"/>
+</svg>

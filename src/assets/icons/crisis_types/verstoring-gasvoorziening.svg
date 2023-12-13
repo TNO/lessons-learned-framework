@@ -1,0 +1,12 @@
+<svg class="inline-block" id="verstoring-gasvoorziening-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 430">
+    <defs>
+        <style>
+            .verstoring-gasvoorziening-cls-2{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:10px}
+        </style>
+    </defs>
+    <circle cx="215" cy="215" r="210" style="fill:#ae7d5b"/>
+    <path class="verstoring-gasvoorziening-cls-2" d="M178.89 179.64h68.54v68.54h-68.54zM298.84 305.29v-62.83c0-3.15-2.56-5.71-5.71-5.71h-22.85v-45.69h51.4c12.62 0 22.85 10.23 22.85 22.85v91.39M127.49 305.29v-62.83c0-3.15 2.56-5.71 5.71-5.71h22.85v-45.69h-51.4c-12.62 0-22.85 10.23-22.85 22.85v91.39M201.74 156.79h22.85v22.85h-22.85z"/>
+    <path class="verstoring-gasvoorziening-cls-2" d="M156.04 173.93h22.85v79.96h-22.85zM247.43 173.93h22.85v79.96h-22.85z"/>
+    <rect class="verstoring-gasvoorziening-cls-2" x="150.33" y="82.54" width="125.66" height="22.85" rx="2" ry="2"/>
+    <path class="verstoring-gasvoorziening-cls-2" d="M258.85 105.39h-91.38l34.27 51.4h22.84l34.27-51.4zM213.16 105.39v51.4"/>
+</svg>

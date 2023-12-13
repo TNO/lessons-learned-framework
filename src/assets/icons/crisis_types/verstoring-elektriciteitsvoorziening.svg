@@ -1,0 +1,10 @@
+<svg class="inline-block" id="verstoring-elektriciteitsvoorziening-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 430">
+    <defs>
+        <style>
+            .verstoring-elektriciteitsvoorziening-cls-2{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:10px}
+        </style>
+    </defs>
+    <circle cx="215" cy="215" r="210" style="fill:#ae7d5b"/>
+    <path class="verstoring-elektriciteitsvoorziening-cls-2" d="M286.37 267.89H141.58c-2.21 0-4-1.79-4-4V162.11h152.79v101.78c0 2.21-1.79 4-4 4ZM190.46 162.11H155.2V82.84c0-1.66 1.34-3 3-3h29.26c1.66 0 3 1.34 3 3v79.27h0ZM272.74 162.11h-35.26V82.84c0-1.66 1.34-3 3-3h29.26c1.66 0 3 1.34 3 3v79.27h0ZM166.96 267.89h94.03v23.51h-94.03zM196.34 350.16V291.4h35.26v58.76"/>
+    <path class="verstoring-elektriciteitsvoorziening-cls-2" d="M213.97 191.49 196.34 215h35.26l-17.63 23.51"/>
+</svg>

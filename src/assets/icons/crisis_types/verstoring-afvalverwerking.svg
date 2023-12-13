@@ -1,0 +1,11 @@
+<svg class="inline-block" id="verstoring-afvalverwerking-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 430">
+    <defs>
+        <style>
+            .verstoring-afvalverwerking-cls-2{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:10px}
+        </style>
+    </defs>
+    <circle cx="215" cy="215" r="210" style="fill:#ae7d5b"/>
+    <path class="verstoring-afvalverwerking-cls-2" d="M324.96 132.03h0c0 10.95-8.88 19.83-19.83 19.83h-9.92l-6.3 119.78c-2.78-.5-5.65-.79-8.58-.79-24.59 0-44.62 20.03-44.62 44.62 0 9.17 2.78 17.7 7.54 24.79H155.4c-10.56 0-19.29-8.28-19.83-18.79l-8.92-169.6h-9.92c-10.95 0-19.83-8.88-19.83-19.83h0c0-10.95 8.88-19.83 19.83-19.83h188.39c10.95 0 19.83 8.88 19.83 19.83Z"/>
+    <circle class="verstoring-afvalverwerking-cls-2" cx="280.34" cy="315.46" r="24.79"/>
+    <path class="verstoring-afvalverwerking-cls-2" d="M126.65 151.86h133.86M186.14 151.86v24.79M235.72 151.86v24.79"/>
+</svg>

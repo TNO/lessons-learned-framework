@@ -198,45 +198,45 @@ const incidentCategories = [
 ];
 
 export type IncidentType =
-  | "ziekte"
-  | "epidemie"
-  | "winter"
-  | "buien"
-  | "hittegolf"
-  | "koudegolf"
-  | "storm"
   | "aardbeving"
-  | "natuurbrand"
-  | "kust"
-  | "rivier"
-  | "vloedgolf"
+  | "afval"
+  | "bomaanslag"
+  | "brand"
+  | "brandstichting"
+  | "buien"
+  | "cbrn"
+  | "cybercrime"
   | "drinkwater"
   | "elektriciteit"
+  | "epidemie"
+  | "explosief"
   | "gas"
-  | "riool"
-  | "voedsel"
-  | "cyberaanval"
+  | "giftig"
+  | "hittegolf"
   | "ict"
-  | "waterincident"
-  | "tunnel"
+  | "instorting"
+  | "koudegolf"
+  | "kust"
   | "luchtvaart"
+  | "natuurbrand"
+  | "nucleair"
+  | "onrust"
+  | "paniek"
+  | "riool"
+  | "rivier"
+  | "sabotage"
   | "scheepvaart"
   | "spoor"
-  | "wegverkeer"
-  | "explosief"
-  | "giftig"
-  | "nucleair"
-  | "bomaanslag"
-  | "brandstichting"
-  | "cbrn"
-  | "sabotage"
-  | "instorting"
-  | "brand"
-  | "paniek"
+  | "storm"
+  | "tunnel"
   | "vandalisme"
+  | "vloedgolf"
+  | "voedsel"
   | "voo"
-  | "onrust"
-  | "dumpen";
+  | "waterincident"
+  | "wegverkeer"
+  | "winter"
+  | "ziekte";
 
 export const incidentTypes: Array<{
   id: IncidentType;
@@ -329,14 +329,14 @@ export const incidentTypes: Array<{
     show: ["incidentCategory=infra"],
   },
   {
-    id: "cyberaanval" as IncidentType,
-    label: "Cyberaanval",
+    id: "cybercrime" as IncidentType,
+    label: "Cybercrime",
     show: ["incidentCategory=cyber"],
   },
   {
     id: "ict" as IncidentType,
     label: "Storing - telecommunicatie/ICT",
-    show: ["incidentCategory=cyber"],
+    show: ["incidentCategory=infra"],
   },
   {
     id: "waterincident" as IncidentType,
@@ -394,6 +394,11 @@ export const incidentTypes: Array<{
     show: ["incidentCategory=terrorisme"],
   },
   {
+    id: "geweld" as IncidentType,
+    label: "Extreem geweld",
+    show: ["incidentCategory=terrorisme"],
+  },
+  {
     id: "cbrn" as IncidentType,
     label: "CBRN-aanslag",
     show: ["incidentCategory=terrorisme"],
@@ -429,14 +434,19 @@ export const incidentTypes: Array<{
     show: ["incidentCategory=oov"],
   },
   {
+    id: "volks­gezondheid" as IncidentType,
+    label: "Verstoring volks­gezondheid",
+    show: ["incidentCategory=oov"],
+  },
+  {
     id: "onrust" as IncidentType,
     label: "Sociale onrust",
     show: ["incidentCategory=oov"],
   },
   {
-    id: "dumpen" as IncidentType,
-    label: "Dumpen afval",
-    show: ["incidentCategory=oov"],
+    id: "afval" as IncidentType,
+    label: "Verstoring afvalverwerking",
+    show: ["incidentCategory=infra"],
   },
 
   // { id: "flooding", label: "Overstroming", show: ["incidentCategory=natural"] },
@@ -936,7 +946,7 @@ export const eventTypes = [
 ];
 
 export const gripLevels = [
-  { id: "grip-0", label: "Geen" },
+  { id: "grip-0", label: "GRIP-0" },
   { id: "grip-1", label: "GRIP-1" },
   { id: "grip-2", label: "GRIP-2" },
   { id: "grip-3", label: "GRIP-3" },

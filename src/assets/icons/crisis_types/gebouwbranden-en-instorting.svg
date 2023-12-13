@@ -1,0 +1,12 @@
+<svg class="inline-block" id="gebouwbranden-en-instorting-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 430">
+    <defs>
+        <style>
+            .gebouwbranden-en-instorting-cls-2{stroke-dasharray:0 0 1.67 19.44}.gebouwbranden-en-instorting-cls-2,.gebouwbranden-en-instorting-cls-3{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:10px}
+        </style>
+    </defs>
+    <circle cx="215" cy="215" r="210" style="fill:#9d5152"/>
+    <path class="gebouwbranden-en-instorting-cls-3" d="M366.29 274.46c-8.43 14.41-24.44 22.62-41.07 22.62h-12.76c-6.61 0-13.04-1.31-18.91-3.82a45.271 45.271 0 0 1-12.65-7.58c-5.3-4.39-9.57-10.03-12.48-16.52-.06-.17-.17-.4-.23-.57a59.264 59.264 0 0 1-4.67-17.09c-.23-1.82-.34-3.76-.4-5.7-.28-6.95.63-14.53 3.19-22.79 4.56-15.04 14.53-32.3 32.81-51.5 5.13-5.3 10.82-10.77 17.2-16.41.17-.17.34-.28.51-.46 0 0 6.49 38.85 19.42 51.78L349.18 187s39.82 48.65 17.09 87.44ZM112.66 320.95V121.8l125.37-27.58v226.73"/>
+    <path class="gebouwbranden-en-instorting-cls-3" d="M274.39 150.92v-40.4l-36.36-16.3M274.39 320.95v-13.2"/>
+    <path class="gebouwbranden-en-instorting-cls-2" d="m132.19 147.78 93.05-19.02M132.19 177.71l93.05-16.58M132.19 205.97l93.05-12.72M132.19 234.72l93.05-9.28M132.19 262.94l93.05-5.89M132.18 291.15l93.06-1.98"/>
+    <path class="gebouwbranden-en-instorting-cls-3" d="M71.41 321.21h299.81"/>
+</svg>

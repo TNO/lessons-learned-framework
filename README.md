@@ -41,3 +41,18 @@ npm start
 ![pubs](img/ss9_pubs.png)
 ![mm](img/ss10_mm.png)
 ![editors](img/ss11_editors.png)
+
+## TODO
+
+- FIX: Edit rights on kcr2 website
+- Add the option to upload reports
+- Add the option to upload one image of the incident (for the infographic)
+- Make a separate app for the infographics view (with a link to the L3)
+- FIX: The non-edit view, since there are new types available. Also update the way lessons are shown.
+- Implement traffic light + smiley for the lessons
+- Show default image and/or infographic for each CM incident type
+- Implement the 9 CM themes and n incident categories (Rijksbrede risico analyse, p85)
+
+## Keycloak
+
+- http://localhost:8765/realms/l3/account/#/

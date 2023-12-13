@@ -1,0 +1,25 @@
+<svg class="inline-block" id="aardbeving-icon" data-name="aardbeving-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 430">
+  <defs>
+    <style>
+      .aardbeving-cls-1 {
+        fill: #007a4d;
+      }
+
+      .aardbeving-cls-2 {
+        fill: none;
+        stroke: #fff;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 10px;
+      }
+    </style>
+  </defs>
+  <circle class="aardbeving-cls-1" cx="215" cy="215" r="210"></circle>
+  <g>
+    <polyline class="aardbeving-cls-2" points="92.22 170.21 185.28 88.78 278.34 170.21"></polyline>
+    <polyline class="aardbeving-cls-2" points="109.67 172.97 109.67 234.19 162.02 234.19"></polyline>
+    <polyline class="aardbeving-cls-2" points="196.91 234.19 260.89 234.19 260.89 172.97"></polyline>
+    <polyline class="aardbeving-cls-2" points="92.22 309.8 92.22 234.19 272.52 234.19 255.08 286.54 284.16 286.54 272.52 333.07 336.5 269.09 295.79 269.09 307.42 234.19 359.77 234.19 359.77 309.8"></polyline>
+  </g>
+  <rect class="aardbeving-cls-2" x="142.21" y="170.21" width="39.61" height="39.61"></rect>
+</svg>
