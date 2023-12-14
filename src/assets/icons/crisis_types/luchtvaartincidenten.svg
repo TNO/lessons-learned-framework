@@ -1,19 +1,21 @@
 <svg class="inline-block" id="luchtvaartincidenten-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 430">
-  <defs>
-    <style>
-      .luchtvaartincidenten-cls-1 {
-        fill: #747f81;
-      }
+    <defs>
+        <style>
+            .luchtvaartincidenten-cls-1 {
+                fill: #007a4d;
+            }
 
-      .luchtvaartincidenten-cls-2 {
-        fill: none;
-        stroke: #fff;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        stroke-width: 10px;
-      }
-    </style>
-  </defs>
-  <circle class="luchtvaartincidenten-cls-1" cx="215" cy="215" r="210"></circle>
-  <path class="luchtvaartincidenten-cls-2" d="m340.7,103.51c-12.93-10.58-32.16-8.25-43.45,4.06l-35.42,38.67-112.24-23.79c-8.63-1.83-17.6.83-23.84,7.07l-26.86,26.86,117.64,39.21-56.03,61.19-37.11-12.37c-9.37-3.12-19.69-.68-26.67,6.3l-16.26,16.26,50.73,21.7-.65.74c-7.66,8.32-7.12,21.31,1.37,28.98,7.83,7.07,20,6.4,27.94-.55l.27-.24,21.7,50.73,16.26-16.26c6.98-6.98,9.42-17.31,6.3-26.67l-12.37-37.11,61.19-56.03,39.21,117.64,26.86-26.86c6.24-6.24,8.9-15.21,7.07-23.84l-23.79-112.24,39.54-36.22,1.01-1.01c12.87-12.87,12.23-34.25-2.41-46.23Z"></path>
+            .luchtvaartincidenten-cls-2 {
+                fill: none;
+                stroke: #fff;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                stroke-width: 10px;
+            }
+        </style>
+    </defs>
+    <circle class="luchtvaartincidenten-cls-1" cx="215" cy="215" r="210"></circle>
+    <path class="luchtvaartincidenten-cls-2"
+        d="m340.7,103.51c-12.93-10.58-32.16-8.25-43.45,4.06l-35.42,38.67-112.24-23.79c-8.63-1.83-17.6.83-23.84,7.07l-26.86,26.86,117.64,39.21-56.03,61.19-37.11-12.37c-9.37-3.12-19.69-.68-26.67,6.3l-16.26,16.26,50.73,21.7-.65.74c-7.66,8.32-7.12,21.31,1.37,28.98,7.83,7.07,20,6.4,27.94-.55l.27-.24,21.7,50.73,16.26-16.26c6.98-6.98,9.42-17.31,6.3-26.67l-12.37-37.11,61.19-56.03,39.21,117.64,26.86-26.86c6.24-6.24,8.9-15.21,7.07-23.84l-23.79-112.24,39.54-36.22,1.01-1.01c12.87-12.87,12.23-34.25-2.41-46.23Z">
+    </path>
 </svg>

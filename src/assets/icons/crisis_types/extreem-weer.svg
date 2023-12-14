@@ -1,4 +1,5 @@
-<svg class="inline-block" id="extreme-weersomstandigheden-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 430">
+<svg class="inline-block" id="extreme-weersomstandigheden-icon" xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 430 430">
   <defs>
     <style>
       .extreme-weersomstandigheden-cls-1 {
@@ -17,7 +18,9 @@
   <circle class="extreme-weersomstandigheden-cls-1" cx="215" cy="215" r="210"></circle>
   <g>
     <path class="extreme-weersomstandigheden-cls-2" d="m221.34,96.09c20.97,0,38.02,17.06,38.02,38.02"></path>
-    <path class="extreme-weersomstandigheden-cls-2" d="m316.39,172.13c0,20.98-17.05,38.02-38.02,38.02h-33.97l14.96-19.01h-44.36l12.67-38.02h-38.02l-19.01,57.03h-6.34c-28.01,0-50.7-22.69-50.7-50.7s22.12-50.13,49.68-50.7c9.76-22.37,32.06-38.02,58.05-38.02,34.98,0,63.37,28.39,63.37,63.37v.57c18,2.98,31.68,18.63,31.68,37.45Z"></path>
+    <path class="extreme-weersomstandigheden-cls-2"
+      d="m316.39,172.13c0,20.98-17.05,38.02-38.02,38.02h-33.97l14.96-19.01h-44.36l12.67-38.02h-38.02l-19.01,57.03h-6.34c-28.01,0-50.7-22.69-50.7-50.7s22.12-50.13,49.68-50.7c9.76-22.37,32.06-38.02,58.05-38.02,34.98,0,63.37,28.39,63.37,63.37v.57c18,2.98,31.68,18.63,31.68,37.45Z">
+    </path>
     <line class="extreme-weersomstandigheden-cls-2" x1="151.63" y1="235.5" x2="151.63" y2="260.85"></line>
     <line class="extreme-weersomstandigheden-cls-2" x1="183.32" y1="305.21" x2="183.32" y2="311.55"></line>
     <line class="extreme-weersomstandigheden-cls-2" x1="151.63" y1="286.2" x2="151.63" y2="311.55"></line>
@@ -31,6 +34,8 @@
     <line class="extreme-weersomstandigheden-cls-2" x1="278.37" y1="235.5" x2="278.37" y2="260.85"></line>
     <line class="extreme-weersomstandigheden-cls-2" x1="278.37" y1="336.9" x2="278.37" y2="362.24"></line>
     <line class="extreme-weersomstandigheden-cls-2" x1="215" y1="336.9" x2="215" y2="362.24"></line>
-    <polygon class="extreme-weersomstandigheden-cls-2" points="259.36 191.15 244.4 210.16 189.65 279.86 202.33 210.16 170.64 210.16 189.65 153.12 227.67 153.12 215 191.15 259.36 191.15"></polygon>
+    <polygon class="extreme-weersomstandigheden-cls-2"
+      points="259.36 191.15 244.4 210.16 189.65 279.86 202.33 210.16 170.64 210.16 189.65 153.12 227.67 153.12 215 191.15 259.36 191.15">
+    </polygon>
   </g>
 </svg>
