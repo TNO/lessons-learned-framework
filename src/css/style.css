@@ -167,3 +167,14 @@ a,
   left: 310px;
   width: calc(100% - 320px);
 }
+ul.dropdown-content.multiple-select-dropdown > li {
+  line-height: 30px;
+  min-height: 30px;
+  & > span {
+    padding: 2px 0px 2px 10px;
+    & span {
+      padding-left: 28px;
+      /* overflow: hidden; */
+    }
+  }
+}
