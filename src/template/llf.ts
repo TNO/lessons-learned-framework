@@ -867,36 +867,21 @@ const publicationForm = [
     type: "text",
     required: true,
     icon: "title",
-    className: "col s6",
+    className: "col s7",
   },
   {
     id: "orgTitle",
     label: "Originele titel (indien van toepassing)",
     type: "text",
     icon: "title",
-    className: "col s6",
+    className: "col s5",
   },
   {
     id: "author",
     type: "text",
     label: "Eerste auteur en/of organisatie",
     icon: "person",
-    className: "col s9",
-  },
-  {
-    id: "yearOfPublication",
-    type: "number",
-    min: 1900,
-    max: 2100,
-    label: "Jaar van publicatie",
-    className: "col s3",
-  },
-  {
-    id: "url",
-    label: "Link",
-    type: "url",
-    icon: "link",
-    className: "col s6",
+    className: "col s4",
   },
   {
     id: "language",
@@ -911,7 +896,7 @@ const publicationForm = [
     required: true,
     label: "Disseminatieniveau",
     type: "select",
-    className: "col s3",
+    className: "col s2",
     options: [
       {
         id: "public",
@@ -921,10 +906,10 @@ const publicationForm = [
         id: "restricted",
         label: "Restrictief",
       },
-      {
-        id: "secret",
-        label: "Geheim",
-      },
+      // {
+      //   id: "secret",
+      //   label: "Geheim",
+      // },
     ],
   },
   {
@@ -934,6 +919,30 @@ const publicationForm = [
     show: "language = other",
     options: languages,
     className: "col s3",
+  },
+  {
+    id: "yearOfPublication",
+    type: "number",
+    min: 1900,
+    max: 2100,
+    label: "Jaar van publicatie",
+    className: "col s3",
+  },
+
+  {
+    id: "url",
+    label: "Link",
+    type: "url",
+    icon: "link",
+    className: "col s6",
+  },
+  {
+    id: "localUrl",
+    label: "Upload publicatie",
+    type: "file",
+    url: `${API_SERVER}/upload/public`,
+    options: [{ id: ".pdf" }],
+    className: "col s6",
   },
 ] as UIForm<IPublication>;
 

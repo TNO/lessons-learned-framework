@@ -11,7 +11,7 @@
     "link": "pnpm link project-board-shared",
     "link2": "npm link mithril-ui-form",
     "start": "concurrently \"npm run serve\" \"npm run dev\"",
-    "serve": "rest-easy-loki",
+    "serve": "node ./node_modules/rest-easy-loki/dist/cli.js --upload upload",
     "keycloak": "docker compose -f ./docker/docker-compose.yaml up -d",
     "docker:build": "docker buildx build -t l3crisis .",
     "docker:tag": "docker tag l3crisis drivereu/l3crisis:nl",

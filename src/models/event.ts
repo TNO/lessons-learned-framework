@@ -82,6 +82,7 @@ export interface IPublication {
   author?: string;
   yearOfPublication?: number;
   url?: string;
+  localUrl?: string;
   language?: string;
   dissemination?: string;
   otherLanguage?: string;
