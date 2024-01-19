@@ -1,5 +1,5 @@
 import m from "mithril";
-import { FlatButton, Icon, Select, TextInput } from "mithril-materialized";
+import { Icon, InputCheckbox, Select, TextInput } from "mithril-materialized";
 import { IEvent } from "../../models";
 import { AppState } from "../../models/app-state";
 import { Roles } from "../../models/roles";
@@ -21,12 +21,14 @@ import { IncidentIcon } from "../ui/incident-icon";
 
 export const EventsList = () => {
   const state = {
+    showFilters: false,
     filterValue: "",
     vrFilter: [],
     eventTypeFilter: [],
     incidentTypeFilter: [],
     cmFunctionFilter: [],
   } as {
+    showFilters: boolean;
     vrFilter: Array<string | number>;
     eventTypeFilter: Array<string | number>;
     incidentTypeFilter: string[];
@@ -54,6 +56,7 @@ export const EventsList = () => {
         eventTypeFilter,
         cmFunctionFilter,
         incidentTypeFilter,
+        showFilters,
       } = state;
       const events = (EventsSvc.getList() || ([] as IEvent[])).sort(sortByName);
       const query = nameAndDescriptionFilter(state.filterValue);
@@ -73,50 +76,26 @@ export const EventsList = () => {
           .filter(incidentFilter(incidentTypeFilter))
           .slice(page * pageSize, (page + 1) * pageSize) || [];
       return m("div", { style: "margin-top: 1em;" }, [
-        m(
-          ".row",
-          m(
-            "div#slide-out.sidenav.sidenav-fixed",
-            {
-              style: "height: 95vh",
-              oncreate: ({ dom }) => {
-                M.Sidenav.init(dom);
-              },
-            },
-            [
-              Auth.isAuthenticated &&
-                m(FlatButton, {
-                  label: "Nieuwe gebeurtenis",
-                  iconName: "add",
-                  class: "col s11 indigo darken-4 white-text",
-                  style: "margin: 1em;",
-                  onclick: async () => {
-                    const ev = await EventsSvc.create({
-                      name: "Nieuwe gebeurtenis",
-                      owner: [Auth.username],
-                      published: false,
-                      duration: 1,
-                    });
-                    if (ev) {
-                      dashboardSvc.switchTo(Dashboards.EDIT, { id: ev.$loki });
-                    }
-                  },
-                }),
-              m(
-                "h4.primary-text",
-                { style: "margin-left: 0.5em;" },
-                "Filter gebeurtenis"
-              ),
-              m(TextInput, {
-                label: "Filter op tekst",
-                id: "filter",
-                placeholder: "Deel van titel of beschrijving...",
-                iconName: "filter_list",
-                onkeyup: (_: KeyboardEvent, v?: string) =>
-                  (state.filterValue = v ? v : ""),
-                style: "margin-right:100px",
-                className: "col s12",
-              }),
+        m(".row.filters", [
+          m(TextInput, {
+            label: "Zoek op tekst",
+            id: "search",
+            placeholder: "Deel van titel of beschrijving...",
+            iconName: "search",
+            onkeyup: (_: KeyboardEvent, v?: string) =>
+              (state.filterValue = v ? v : ""),
+            className: "col s10",
+          }),
+          m(InputCheckbox, {
+            label: "Show filters",
+            iconName: "filter_list",
+            modalId: "filter-panel",
+            className: "col s2",
+            checked: showFilters,
+            onchange: (f) => (state.showFilters = f),
+          }),
+          showFilters &&
+            m(".row.filter-panel", [
               m(Select, {
                 placeholder: "Selecteer",
                 label: "Type gebeurtenis",
@@ -125,7 +104,7 @@ export const EventsList = () => {
                 iconName: "event_note",
                 multiple: true,
                 onchange: (f) => (state.eventTypeFilter = f),
-                className: "col s12",
+                className: "col s12 m6 l3",
               }),
               m(Select, {
                 placeholder: "Selecteer",
@@ -135,7 +114,7 @@ export const EventsList = () => {
                 iconName: "flash_on",
                 multiple: true,
                 onchange: (f) => (state.incidentTypeFilter = f as string[]),
-                className: "col s12",
+                className: "col s12 m6 l3",
               }),
               m(Select, {
                 placeholder: "Selecteer",
@@ -145,7 +124,7 @@ export const EventsList = () => {
                 iconName: "connect_without_contact",
                 multiple: true,
                 onchange: (f) => (state.cmFunctionFilter = f),
-                className: "col s12",
+                className: "col s12 m6 l3",
                 dropdownOptions: { container: "body" as any },
               }),
               m(Select, {
@@ -156,31 +135,17 @@ export const EventsList = () => {
                 iconName: "public",
                 multiple: true,
                 onchange: (f) => (state.vrFilter = f),
-                className: "col s12",
+                className: "col s12 m6 l3",
               }),
-              m(FlatButton, {
-                label: "Wis alle filters",
-                iconName: "clear_all",
-                class: "col s11",
-                style: "margin: 1em;",
-                onclick: () => {
-                  state.filterValue = "";
-                  state.vrFilter.length = 0;
-                  state.cmFunctionFilter.length = 0;
-                  state.eventTypeFilter.length = 0;
-                  state.incidentTypeFilter.length = 0;
-                },
-              }),
-            ]
-          )
-        ),
+            ]),
+        ]),
         m(
           "#event-list.row",
           filteredEvents.map((event) =>
-            m(".col.s12.m6.xl4", [
+            m(".card-item", [
               m(
-                ".card.hoverable",
-                m(".card-content", { style: "height: 150px;" }, [
+                ".card.small.hoverable",
+                m(".card-content", [
                   m(
                     m.route.Link,
                     {
@@ -222,81 +187,6 @@ export const EventsList = () => {
           )
         ),
       ]);
-      // return m('.events-list', [
-      //   m('.row', [
-      //     m(FlatButton, {
-      //       label: 'Add event',
-      //       iconName: 'add',
-      //       class: 'green input-field right btn-medium',
-      //       style: 'margin: 1em 1em 0 0;',
-      //       onclick: () => {
-      //         EventsSvc.new({ title: 'New event' });
-      //         dashboardSvc.switchTo(Dashboards.EDIT, { id: -1 });
-      //       },
-      //     }),
-      //     m(TextInput, {
-      //       label: 'Text filter of events',
-      //       id: 'filter',
-      //       iconName: 'filter_list',
-      //       onkeyup: (_: KeyboardEvent, v?: string) => (state.filterValue = v ? v : ''),
-      //       style: 'margin-right:100px',
-      //       className: 'col s12 l4',
-      //     }),
-      //     m(Select, {
-      //       placeholder: 'Kies één',
-      //       label: 'Event type filter',
-      //       inline: true,
-      //       checkedId: filter,
-      //       options: eventTypes.map(o => ({ label: capitalizeFirstLetter(o.id), ...o })),
-      //       onchange: f => state.filter = f,
-      //       className: 'col s12 l4'
-      //     }),
-      //   ]),
-      //   m('.row', m('p', 'Available events.')),
-      //   m(
-      //     '.row',
-      //     filteredEvents.map(event =>
-      //       m('.col.s12.l4', [
-      //         m(
-      //           '.card.hoverable',
-      //           m('.card-content', { style: 'height: 150px;' }, [
-      //             m(
-      //               m.route.Link,
-      //               {
-      //                 className: 'card-title',
-      //                 href: dashboardSvc.route(Dashboards.READ).replace(':id', `${event.$loki}`),
-      //               },
-      //               event.name || 'Untitled'
-      //             ),
-      //             m('p.light.block-with-text', event.desc),
-      //           ]),
-      //           m('.card-action', [
-      //             m(
-      //               'a',
-      //               {
-      //                 target: '_blank',
-      //                 href: `${AppState.apiService()}/lessons/${event.$loki}`,
-      //               },
-      //               m(Icon, {
-      //                 iconName: 'cloud_download',
-      //               })
-      //             ),
-      //             m(
-      //               'span.badge',
-      //               `${
-      //                 event.lessons
-      //                   ? event.lessons.length === 1
-      //                     ? '1 lesson'
-      //                     : `${event.lessons.length} lessons`
-      //                   : '0 lessons'
-      //               }`
-      //             ),
-      //           ])
-      //         ),
-      //       ])
-      //     )
-      //   ),
-      // ]);
     },
   };
 };
