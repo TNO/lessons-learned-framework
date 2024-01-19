@@ -13,7 +13,7 @@ config();
 
 // const rspack = require('@rspack/core');
 const devMode = process.env.NODE_ENV === "development";
-const outputPath = resolve(__dirname, devMode ? "dist" : "../server/public");
+const outputPath = resolve(__dirname, devMode ? "dist" : "public");
 
 const mode = devMode ? "development" : "production";
 const serverURL = devMode ? process.env.SERVER_URL : "/api/v1";
