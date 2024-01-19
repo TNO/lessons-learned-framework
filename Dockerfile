@@ -11,7 +11,7 @@ WORKDIR /code
 COPY package.json ./
 RUN npm i
 COPY ./src ./src
-COPY tsconfig.json rspack.config.js ./
+COPY tsconfig.json rspack.config.ts ./
 RUN npm run build
 
 FROM node:18-alpine

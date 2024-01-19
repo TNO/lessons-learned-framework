@@ -1,0 +1,27 @@
+{
+  "realm" : "l3",
+  "users" : [ {
+    "id" : "b282e796-885d-4c76-83d5-25439329cd50",
+    "createdTimestamp" : 1705662334016,
+    "username" : "erik.vullings@tno.nl",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : true,
+    "firstName" : "Erik",
+    "lastName" : "Vullings",
+    "email" : "erik.vullings@tno.nl",
+    "credentials" : [ {
+      "id" : "43d19c13-d32a-4314-bc6a-c688be589016",
+      "type" : "password",
+      "userLabel" : "My password",
+      "createdDate" : 1705662344006,
+      "secretData" : "{\"value\":\"XiY0K9mImYBeNF21bqKztC5mA9U7Pj93Mst5QnvsBe4=\",\"salt\":\"EKRk9JP+x1lgbON0JcsMtg==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-l3" ],
+    "notBefore" : 0,
+    "groups" : [ "/Admins" ]
+  } ]
+}

@@ -40,29 +40,33 @@
   },
   "homepage": "https://github.com/DRIVER-EU/lessons-learned-framework#readme",
   "dependencies": {
+    "dotenv": "^16.3.1",
     "base64-js": "^1.5.1",
     "js-sha256": "^0.10.1",
-    "keycloak-js": "22.0.1",
+    "keycloak-js": "23.0.4",
     "leaflet": "^1.9.4",
     "leaflet-draw": "^1.0.4",
-    "material-icons": "^1.13.10",
+    "material-icons": "^1.13.12",
     "materialize-css": "^1.0.0",
     "mithril": "^2.2.2",
     "mithril-leaflet": "^0.4.3",
-    "mithril-materialized": "^1.0.1",
-    "mithril-ui-form": "^1.9.1",
+    "mithril-materialized": "^1.1.4",
+    "mithril-ui-form": "^1.10.4",
     "mithril-ui-form-leaflet-plugin": "0.5.3",
     "rest-easy-loki": "^1.5.5",
-    "slimdown-js": "^0.7.1"
+    "slimdown-js": "^0.7.2"
   },
   "devDependencies": {
-    "@types/leaflet": "^1.9.4",
-    "@types/lokijs": "^1.5.10",
-    "@types/materialize-css": "^1.0.11",
-    "@types/mithril": "^2.0.14",
-    "concurrently": "^8.2.1",
-    "@rspack/cli": "0.3.1",
-    "rimraf": "^5.0.1",
-    "typescript": "^5.2.2"
+    "@types/leaflet": "^1.9.8",
+    "@types/lokijs": "^1.5.14",
+    "@types/materialize-css": "^1.0.14",
+    "@types/mithril": "^2.2.6",
+    "concurrently": "^8.2.2",
+    "@rspack/cli": "0.5.1",
+    "@rspack/core": "^0.5.1",
+    "rimraf": "^5.0.5",
+    "ts-node": "^10.9.2",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3"
   }
 }

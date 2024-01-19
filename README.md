@@ -1,12 +1,13 @@
 # LESSONS-LEARNED-FRAMEWORK
 
-A web application for storing and searching your lessons learned. See [l3crisis.eu](https://l3crisis.eu) for the live version.
+A web application for storing and searching your lessons learned. 
+<!-- See [l3crisis.eu](https://l3crisis.eu) for the live version. -->
 
 ![landing page](img/ss0_landing.png)
 
 ## Installation
 
-Install all dependencies, start the database service and run parcel to bundle your dependencies. You can access the application at [http://localhost:3000](http://localhost:3000).
+Install all dependencies, start the database service and run `rspack` to bundle your dependencies. You can access the application at [http://localhost:3000](http://localhost:3000).
 
 ```bash
 npm i
@@ -16,7 +17,7 @@ npm run serve
 
 ## Development
 
-As above, but now run `parcel` in watch mode.
+As above, but now run `rspack` in watch mode.
 
 ```bash
 npm i
@@ -27,6 +28,8 @@ npm start
 
 - LOKI_PORT: to change the output port, default 3000, e.g. `set LOKI_PORT=80` to serve it at [http://localhost](http://localhost).
 - NODE_DEV: When set to `development`, every server request is logged to the command line. Set it to `production` to stop logging requests.
+
+Run `Keycloak` as explained in the `docker` folder.
 
 ## Screenshots
 
@@ -47,7 +50,7 @@ npm start
 - FIX: Edit rights on kcr2 website
 - Add the option to upload reports
 - Add the option to upload one image of the incident (for the infographic)
-- Make a separate app for the infographics view (with a link to the L3)
+- Make a separate app for the infographics view (with a link to the L3) -> GRIP-ATLAS
 - FIX: The non-edit view, since there are new types available. Also update the way lessons are shown.
 - Implement traffic light + smiley for the lessons
 - Show default image and/or infographic for each CM incident type

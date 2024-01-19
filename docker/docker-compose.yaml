@@ -35,6 +35,7 @@ services:
       - "8765:8080"
     volumes:
       - ./realms:/opt/jboss/keycloak/
+      - ./export:/tmp/export/
   l3:
     image: l3crisis
     profiles: ["full"]
