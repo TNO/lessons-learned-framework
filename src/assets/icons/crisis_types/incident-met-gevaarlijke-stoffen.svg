@@ -1,29 +1,20 @@
-<svg class="inline-block" id="verstoring-gasvoorziening-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 430"></svg>
+<svg id="prefix__incident-met-gevaardlijke-stoffen-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 430">
   <defs>
     <style>
-      .verstoring-gasvoorziening-cls-1 {
-        fill: #ae7d5b;
-      }
-
-      .verstoring-gasvoorziening-cls-2 {
+      .prefix__incident-met-gevaardlijke-stoffen-cls-2 {
         fill: none;
         stroke: #fff;
         stroke-linecap: round;
         stroke-linejoin: round;
-        stroke-width: 10px;
+        stroke-width: 10px
       }
     </style>
   </defs>
-  <circle class="verstoring-gasvoorziening-cls-1" cx="215" cy="215" r="210"></circle>
-  <g>
-    <rect class="verstoring-gasvoorziening-cls-2" x="178.89" y="179.64" width="68.54" height="68.54"></rect>
-    <path class="verstoring-gasvoorziening-cls-2" d="m298.84,305.29v-62.83c0-3.15-2.56-5.71-5.71-5.71h-22.85v-45.69h51.4c12.62,0,22.85,10.23,22.85,22.85v91.39"></path>
-    <path class="verstoring-gasvoorziening-cls-2" d="m127.49,305.29v-62.83c0-3.15,2.56-5.71,5.71-5.71h22.85s0-45.69,0-45.69h-51.4c-12.62,0-22.85,10.23-22.85,22.85v91.39"></path>
-    <rect class="verstoring-gasvoorziening-cls-2" x="201.74" y="156.79" width="22.85" height="22.85"></rect>
-    <rect class="verstoring-gasvoorziening-cls-2" x="156.04" y="173.93" width="22.85" height="79.96"></rect>
-    <rect class="verstoring-gasvoorziening-cls-2" x="247.43" y="173.93" width="22.85" height="79.96"></rect>
-    <rect class="verstoring-gasvoorziening-cls-2" x="150.33" y="82.54" width="125.66" height="22.85" rx="2" ry="2"></rect>
-    <polygon class="verstoring-gasvoorziening-cls-2" points="258.85 105.39 167.47 105.39 201.74 156.79 224.58 156.79 258.85 105.39"></polygon>
-    <line class="verstoring-gasvoorziening-cls-2" x1="213.16" y1="105.39" x2="213.16" y2="156.79"></line>
-  </g>
+  <circle cx="215" cy="215" r="210" fill="#a70240" />
+  <path class="prefix__incident-met-gevaardlijke-stoffen-cls-2"
+    d="M303.97 105.1c0 3.06-1.23 5.85-3.29 7.85-2 2.06-4.79 3.29-7.85 3.29h-5.57v94.68h-49.18l-23.22-40.27-23.22 40.27h-49.18v-94.68h-5.57c-6.13 0-11.14-5.01-11.14-11.14 0-3.06 1.23-5.85 3.29-7.85 2-2.06 4.79-3.29 7.85-3.29h155.95c6.13 0 11.14 5.01 11.14 11.14z" />
+  <path class="prefix__incident-met-gevaardlijke-stoffen-cls-2"
+    d="M191.63 210.92l-12.87 22.28h-41.88c-6.15 0-11.14-4.99-11.14-11.14s4.99-11.14 11.14-11.14h54.75zM303.97 222.06c0 6.15-4.99 11.14-11.14 11.14h-41.88l-12.87-22.28h54.75c6.15 0 11.14 4.99 11.14 11.14zM303.97 339.02c0 3.06-1.23 5.85-3.29 7.85-2 2.06-4.79 3.29-7.85 3.29H136.88c-6.13 0-11.14-5.01-11.14-11.14 0-3.06 1.23-5.85 3.29-7.85 2-2.06 4.79-3.29 7.85-3.29h5.57V233.2h36.31l-16.82 29.13h105.82l-16.82-29.13h36.31v94.68h5.57c6.13 0 11.14 5.01 11.14 11.14z" />
+  <path class="prefix__incident-met-gevaardlijke-stoffen-cls-2"
+    d="M267.77 262.33H161.95l16.82-29.13 12.86-22.28 23.23-40.26 23.22 40.26 12.87 22.28 16.82 29.13zM214.86 210.92v16.71M142.45 116.24h122.53M164.73 327.88h122.53" />
 </svg>
