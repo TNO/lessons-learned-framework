@@ -9,7 +9,7 @@ const p = (val: string | number | Date | undefined, output?: string) =>
   val ? output || val : "";
 
 /** Print a list: a, b and c */
-const l = (val: undefined | string | string[]) => {
+const l = (val: undefined | string | string[], and = "en") => {
   if (!val) {
     return "";
   }
@@ -18,7 +18,9 @@ const l = (val: undefined | string | string[]) => {
       return val[0];
     }
     const [last, oneButLast, ...items] = val.reverse();
-    return [...items, `${oneButLast} and ${last}`].filter(Boolean).join(", ");
+    return [...items, `${oneButLast} ${and} ${last}`]
+      .filter(Boolean)
+      .join(", ");
   } else {
     return val;
   }
@@ -168,10 +170,10 @@ const showSources = (event: Partial<IEvent>) => {
 
   return ps || ms
     ? `
-<h5 class="primary-text">Publicaties</h5>
+${ps ? '<h5 class="primary-text">Publicaties</h5>' : ""}
 ${ps}
 
-<h5 class="primary-text">Multimedia bronnen</h5>
+${ms ? '<h5 class="primary-text">Multimedia bronnen</h5>' : ""}
 ${ms}
 `
     : "";
@@ -195,9 +197,9 @@ const formatEvent = (event: IEvent) => {
     initialIncident,
     locationText = "",
     lossOfServices,
-    memberCountries,
+    vrs = [],
     name,
-    otherCountries,
+    memberCountries,
     intInstitutions,
     otherIncidents,
     scale,
@@ -209,20 +211,18 @@ const formatEvent = (event: IEvent) => {
   } = event;
   const oi = l(otherIncidents);
   const ss = l(societalSectors);
-  const mc = otherCountries
-    ? l([...(memberCountries || []), otherCountries])
-    : l(memberCountries);
+  const mc = memberCountries ? l([...vrs, ...memberCountries]) : l(vrs);
   const cm = l(cmFunctions);
   const md = `
 <h4 class="primary-text center-align">${name}</h4>
 
 ${showEditors(event)}
 
-${p(eventType, `Type gebeurtenis: ${eventType}`)}
+${p(eventType, `**Type gebeurtenis:** ${eventType}`)}
 
-De gebeurtenis vond plaats op ${p(locationText)} ${p(
+De gebeurtenis vond plaats in ${p(locationText)} ${p(
     startDate,
-    `om ${new Date(startDate).toDateString()}`
+    `op ${new Date(startDate).toLocaleDateString()}`
   )}${p(
     duration,
     ` en duurde ${duration} dag${duration > 1 ? "en" : ""}`
@@ -230,16 +230,14 @@ De gebeurtenis vond plaats op ${p(locationText)} ${p(
 
 <h5 class="primary-text">Incident kenmerken</h5>
 
-Het incident werd veroorzaakt door${
-    initialIncident && /^[aeiuo]/i.test(initialIncident) ? "n" : ""
-  } ${p(initialIncident)}${
+Het incident werd veroorzaakt door een _${p(initialIncident)}_${
     oi && oi.length > 0
       ? formatOptional(
-          { prepend: ", en veroorzaakte de volgende incidenten: " },
+          { prepend: ", en veroorzaakte de volgende incidenten: _" },
           oi
         )
       : ""
-  }.
+  }_.
 
   ${p(incidentInfo)}
   ${p(scale, `De schaal van deze gebeurtenis was ${scale}.`)} ${p(
@@ -256,7 +254,7 @@ ${p(environment, `- Milieuschade: ${environment}`)}
 
 <h5 class="primary-text">Geografische kenmerken</h5>
 
-${p(mc, `De gebeurtenis betrof de volgende veiligheidsregio('s): ${mc}. `)}
+${p(mc, `De gebeurtenis betrof de volgende veiligheidsregio('s): _${mc}_. `)}
 ${p(intInstitutions, `Inclusief de volgende instituten: ${intInstitutions}. `)}
 
 ${scaleExplanation}`;
@@ -275,7 +273,7 @@ De volgende crisis management processen waren van specifieke interesse voor het 
 
 ${p(challengesInfo)}
 
-<h5 class="primary-text">Lessons</h5>
+<h5 class="primary-text">Lessen</h5>
 ${showLessons(event)}
 
 ${showSources(event)}
