@@ -45,12 +45,11 @@ export const EventsList = () => {
       ? -1
       : 0;
 
-  const pageSize = 24;
+  const pageSize = 124;
 
   return {
     oninit: () => EventsSvc.loadList(),
     view: () => {
-      console.log("EVENTS-LIST VIEW");
       const {
         vrFilter,
         eventTypeFilter,

@@ -1204,7 +1204,7 @@ const editorForm = [
     className: "col s6",
   },
   {
-    id: "country",
+    id: "vrs",
     label: "Veiligheidsregio",
     type: "select",
     options: veiligheidsregios,
