@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set enviroment
         shell: bash
@@ -34,7 +34,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/l3crisis:nl_${{ env.branch }}_${{ env.sha_short }}
+          tags: drivereu/l3crisis:nl_${{ env.branch }}_${{ env.sha_short }}
 
   # build:
 
