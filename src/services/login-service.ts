@@ -62,6 +62,8 @@ export const Auth = {
     if (token && refreshToken && tokenParsed) {
       window.localStorage.setItem(tokenKey, token);
       window.localStorage.setItem(refreshTokenKey, refreshToken);
+      Auth.token = token;
+      Auth.refreshToken = refreshToken;
       Auth.setUsername((tokenParsed as any).preferred_username || "");
       Auth.setName((tokenParsed as any).name || "");
       Auth.setEmail((tokenParsed as any).email || "");
