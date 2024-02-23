@@ -2,6 +2,7 @@ import m from "mithril";
 import { IEvent } from "../models";
 import { ChannelNames } from "../models/channels";
 import { RestService } from "./rest-service";
+import { Auth } from "./login-service";
 
 class EventsService extends RestService<Partial<IEvent>> {
   constructor() {
@@ -18,6 +19,9 @@ class EventsService extends RestService<Partial<IEvent>> {
         method: "GET",
         url: this.baseUrl + filter,
         withCredentials: this.withCredentials,
+        headers: Auth.token ? {
+          Authorization: `Bearer ${Auth.token}`,
+        } : {},
       });
       if (!result) {
         throw Error("No result found at " + this.baseUrl);

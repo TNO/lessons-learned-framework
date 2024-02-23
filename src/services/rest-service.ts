@@ -2,6 +2,7 @@ import m from "mithril";
 import { AppState } from "../models/app-state";
 import { TopicNames } from "../models/channels";
 import { IChannelDefinition, messageBus } from "./message-bus-service";
+import { Auth } from "./login-service";
 
 const log = console.log;
 const error = console.error;
@@ -38,6 +39,9 @@ export class RestService<T extends { $loki?: number }> {
         url: this.baseUrl,
         body: fd || item,
         withCredentials: this.withCredentials,
+        headers: Auth.token ? {
+          Authorization: `Bearer ${Auth.token}`,
+        } : {},
       });
       this.setCurrent(result);
       this.addItemToList(this.current);
@@ -56,6 +60,9 @@ export class RestService<T extends { $loki?: number }> {
           url: this.baseUrl + item.$loki,
           body: fd || item,
           withCredentials: this.withCredentials,
+          headers: Auth.token ? {
+            Authorization: `Bearer ${Auth.token}`,
+          } : {},
         })
         .catch((e) => console.error(e));
       // this.setCurrent(data);
@@ -73,6 +80,9 @@ export class RestService<T extends { $loki?: number }> {
         method: "DELETE",
         url: this.baseUrl + id,
         withCredentials: this.withCredentials,
+        headers: Auth.token ? {
+          Authorization: `Bearer ${Auth.token}`,
+        } : {},
       });
       log(`Deleted with id: ${id}.`);
       this.removeItemFromList(id);
@@ -89,6 +99,9 @@ export class RestService<T extends { $loki?: number }> {
       method: "GET",
       url: this.baseUrl + id,
       withCredentials: this.withCredentials,
+      headers: Auth.token ? {
+        Authorization: `Bearer ${Auth.token}`,
+      } : {},
     });
     if (!result) {
       console.warn("No result found at " + this.baseUrl);
@@ -103,6 +116,9 @@ export class RestService<T extends { $loki?: number }> {
       method: "GET",
       url: this.baseUrl,
       withCredentials: this.withCredentials,
+      headers: Auth.token ? {
+        Authorization: `Bearer ${Auth.token}`,
+      } : {},
     });
     if (!result) {
       console.warn("No result found at " + this.baseUrl);
